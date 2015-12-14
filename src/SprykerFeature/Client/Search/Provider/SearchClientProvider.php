@@ -4,7 +4,7 @@
  * (c) Spryker Systems GmbH copyright protected
  */
 
-namespace SprykerFeature\Client\Search\Service\Provider;
+namespace SprykerFeature\Client\Search\Provider;
 
 use SprykerFeature\Shared\Search\Provider\AbstractSearchClientProvider;
 

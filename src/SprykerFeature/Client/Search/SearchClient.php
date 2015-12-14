@@ -4,10 +4,10 @@
  * (c) Spryker Systems GmbH copyright protected
  */
 
-namespace SprykerFeature\Client\Search\Service;
+namespace SprykerFeature\Client\Search;
 
 use Elastica\Index;
-use SprykerEngine\Client\Kernel\Service\AbstractClient;
+use SprykerEngine\Client\Kernel\AbstractClient;
 
 /**
  * @method SearchDependencyContainer getDependencyContainer()

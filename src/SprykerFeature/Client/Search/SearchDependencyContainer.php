@@ -4,13 +4,13 @@
  * (c) Spryker Systems GmbH copyright protected
  */
 
-namespace SprykerFeature\Client\Search\Service;
+namespace SprykerFeature\Client\Search;
 
-use SprykerEngine\Client\Kernel\Service\AbstractServiceDependencyContainer;
-use SprykerFeature\Client\Search\Service\Provider\IndexClientProvider;
-use SprykerFeature\Client\ZedRequest\Service\Client\ZedClient;
+use SprykerEngine\Client\Kernel\AbstractDependencyContainer;
+use SprykerFeature\Client\Search\Provider\IndexClientProvider;
+use SprykerFeature\Client\ZedRequest\Client\ZedClient;
 
-class SearchDependencyContainer extends AbstractServiceDependencyContainer
+class SearchDependencyContainer extends AbstractDependencyContainer
 {
 
     /**

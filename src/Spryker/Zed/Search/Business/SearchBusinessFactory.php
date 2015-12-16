@@ -17,7 +17,7 @@ use Spryker\Zed\Search\SearchDependencyProvider;
 /**
  * @method SearchConfig getConfig()
  */
-class SearchDependencyContainer extends AbstractBusinessFactory
+class SearchBusinessFactory extends AbstractBusinessFactory
 {
 
     /**

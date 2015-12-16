@@ -17,7 +17,7 @@ use Spryker\Zed\Storage\Communication\Table\StorageTable;
 /**
  * @method SearchConfig getConfig()
  */
-class SearchDependencyContainer extends AbstractCommunicationFactory
+class SearchCommunicationFactory extends AbstractCommunicationFactory
 {
 
     /**

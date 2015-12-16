@@ -10,7 +10,7 @@ use Spryker\Client\Kernel\AbstractFactory;
 use Spryker\Client\Search\Provider\IndexClientProvider;
 use Spryker\Client\ZedRequest\Client\ZedClient;
 
-class SearchDependencyContainer extends AbstractFactory
+class SearchFactory extends AbstractFactory
 {
 
     /**

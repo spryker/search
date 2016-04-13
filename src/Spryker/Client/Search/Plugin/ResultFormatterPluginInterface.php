@@ -5,16 +5,17 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Client\Search\Model\ResultFormatter;
+namespace Spryker\Client\Search\Plugin;
 
-interface ResultFormatterInterface
+interface ResultFormatterPluginInterface
 {
 
     /**
      * @param mixed $searchResult
+     * @param array $requestParameters
      *
-     * @return mixed
+     * @return array
      */
-    public function formatResult($searchResult);
+    public function formatResult($searchResult, array $requestParameters = []);
 
 }

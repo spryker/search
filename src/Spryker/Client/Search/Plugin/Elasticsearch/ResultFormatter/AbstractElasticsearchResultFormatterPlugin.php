@@ -5,23 +5,26 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Client\Search\Model\ResultFormatter;
+namespace Spryker\Client\Search\Plugin\Elasticsearch\ResultFormatter;
 
 use Elastica\ResultSet;
+use Spryker\Client\Kernel\AbstractPlugin;
+use Spryker\Client\Search\Plugin\ResultFormatterPluginInterface;
 
-abstract class AbstractElasticsearchResultFormatter implements ResultFormatterInterface
+abstract class AbstractElasticsearchResultFormatterPlugin extends AbstractPlugin implements ResultFormatterPluginInterface
 {
 
     /**
      * @param \Elastica\ResultSet $searchResult
+     * @param array $requestParameters
      *
-     * @return mixed
+     * @return array
      */
-    public function formatResult($searchResult)
+    public function formatResult($searchResult, array $requestParameters = [])
     {
         $this->assertResultType($searchResult);
 
-        return $this->process($searchResult);
+        return $this->formatSearchResult($searchResult, $requestParameters);
     }
 
     /**
@@ -42,9 +45,10 @@ abstract class AbstractElasticsearchResultFormatter implements ResultFormatterIn
 
     /**
      * @param \Elastica\ResultSet $searchResult
+     * @param array $requestParameters
      *
-     * @return mixed
+     * @return array
      */
-    abstract protected function process(ResultSet $searchResult);
+    abstract protected function formatSearchResult(ResultSet $searchResult, array $requestParameters);
 
 }

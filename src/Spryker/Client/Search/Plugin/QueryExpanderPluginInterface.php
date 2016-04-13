@@ -5,24 +5,19 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Client\Search\Model\Query\Decorator;
+namespace Spryker\Client\Search\Plugin;
 
 use Spryker\Client\Search\Model\Query\QueryInterface;
 
-abstract class AbstractQueryDecorator implements QueryInterface
+interface QueryExpanderPluginInterface
 {
 
     /**
-     * @var \Spryker\Client\Search\Model\Query\QueryInterface
-     */
-    protected $searchQuery;
-
-    /**
      * @param \Spryker\Client\Search\Model\Query\QueryInterface $searchQuery
+     * @param array $requestParameters
+     *
+     * @return \Spryker\Client\Search\Model\Query\QueryInterface
      */
-    public function __construct(QueryInterface $searchQuery)
-    {
-        $this->searchQuery = $searchQuery;
-    }
+    public function expandQuery(QueryInterface $searchQuery, array $requestParameters = []);
 
 }

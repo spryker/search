@@ -5,24 +5,22 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\Search\Dependency\Facade;
-
-use Spryker\Zed\UtilEncoding\Business\UtilEncodingFacadeInterface;
+namespace Spryker\Zed\Search\Dependency\Service;
 
 class SearchToUtilEncodingBridge implements SearchToUtilEncodingInterface
 {
 
     /**
-     * @var \Spryker\Zed\UtilEncoding\Business\UtilEncodingFacadeInterface
+     * @var \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface
      */
-    protected $utilEncodeFacade;
+    protected $utilEncodingService;
 
     /**
-     * @param \Spryker\Zed\UtilEncoding\Business\UtilEncodingFacadeInterface $utilEncodeFacade
+     * @param \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface $utilEncodingService
      */
-    public function __construct(UtilEncodingFacadeInterface $utilEncodeFacade)
+    public function __construct($utilEncodingService)
     {
-        $this->utilEncodeFacade = $utilEncodeFacade;
+        $this->utilEncodingService = $utilEncodingService;
     }
 
     /**
@@ -35,7 +33,7 @@ class SearchToUtilEncodingBridge implements SearchToUtilEncodingInterface
      */
     public function decodeJson($jsonValue, $assoc = false, $depth = null, $options = null)
     {
-        return $this->utilEncodeFacade->decodeJson($jsonValue, $assoc, $depth, $options);
+        return $this->utilEncodingService->decodeJson($jsonValue, $assoc, $depth, $options);
     }
 
 }

@@ -5,8 +5,10 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\Search\Business\Exception;
+namespace Spryker\Client\Search\Exception;
 
-class InvalidIndexDefinitionException extends \Exception
+use Exception;
+
+class SearchResponseException extends Exception
 {
 }

@@ -7,14 +7,14 @@
 
 namespace Spryker\Client\Search\Dependency\Plugin;
 
-interface QueryInterface
+interface SearchConfigExpanderPluginInterface
 {
 
     /**
      * @api
      *
-     * @return mixed A query object.
+     * @return \Generated\Shared\Transfer\SearchConfigExtensionTransfer
      */
-    public function getSearchQuery();
+    public function getSearchConfigExtension();
 
 }

@@ -5,10 +5,16 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\Search\Business\Exception;
+namespace Spryker\Client\Search\Dependency\Plugin;
 
-use Exception;
-
-class InvalidPropertyNameException extends Exception
+interface SearchStringGetterInterface
 {
+
+    /**
+     * @api
+     *
+     * @return string
+     */
+    public function getSearchString();
+
 }

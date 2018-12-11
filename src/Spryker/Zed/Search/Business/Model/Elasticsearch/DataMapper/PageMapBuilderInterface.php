@@ -9,6 +9,7 @@ namespace Spryker\Zed\Search\Business\Model\Elasticsearch\DataMapper;
 
 use Generated\Shared\Transfer\PageMapTransfer;
 
+/** @deprecated Use \Spryker\Zed\ProductPageSearchExtension\Dependency\PageMapBuilderInterface instead. */
 interface PageMapBuilderInterface
 {
     /**

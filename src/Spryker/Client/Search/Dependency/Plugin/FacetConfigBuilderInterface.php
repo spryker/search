@@ -8,6 +8,9 @@ namespace Spryker\Client\Search\Dependency\Plugin;
 
 use Generated\Shared\Transfer\FacetConfigTransfer;
 
+/**
+ * @deprecated Use `\Spryker\Client\SearchExtension\Dependency\Plugin\FacetConfigBuilderInterface` instead.
+ */
 interface FacetConfigBuilderInterface
 {
     /**

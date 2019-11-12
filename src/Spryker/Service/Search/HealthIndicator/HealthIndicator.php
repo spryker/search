@@ -8,19 +8,19 @@
 namespace Spryker\Service\Search\HealthIndicator;
 
 use Generated\Shared\Transfer\HealthCheckServiceResponseTransfer;
-use Spryker\Service\Search\Dependency\Client\SearchToSearchClientInterface;
+use Spryker\Client\Search\SearchClientInterface;
 
 class HealthIndicator implements HealthIndicatorInterface
 {
     /**
-     * @var \Spryker\Service\Search\Dependency\Client\SearchToSearchClientInterface
+     * @var \Spryker\Client\Search\SearchClientInterface
      */
     protected $searchClient;
 
     /**
-     * @param \Spryker\Service\Search\Dependency\Client\SearchToSearchClientInterface $searchClient
+     * @param \Spryker\Client\Search\SearchClientInterface $searchClient
      */
-    public function __construct(SearchToSearchClientInterface $searchClient)
+    public function __construct(SearchClientInterface $searchClient)
     {
         $this->searchClient = $searchClient;
     }

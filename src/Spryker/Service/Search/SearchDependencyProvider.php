@@ -9,7 +9,6 @@ namespace Spryker\Service\Search;
 
 use Spryker\Service\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Service\Kernel\Container;
-use Spryker\Service\Search\Dependency\Client\SearchToSearchClientBridge;
 
 class SearchDependencyProvider extends AbstractBundleDependencyProvider
 {
@@ -35,9 +34,7 @@ class SearchDependencyProvider extends AbstractBundleDependencyProvider
     protected function addStorageClient(Container $container): Container
     {
         $container->set(static::CLIENT_SEARCH, function ($container) {
-            return new SearchToSearchClientBridge(
-                $container->getLocator()->search()->client()
-            );
+            return $container->getLocator()->search()->client();
         });
 
         return $container;

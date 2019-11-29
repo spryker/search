@@ -5,13 +5,13 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Service\Search\HealthIndicator;
+namespace Spryker\Zed\Search\Business\Model\Elasticsearch\HealthCheckIndicator;
 
 use Exception;
 use Generated\Shared\Transfer\HealthCheckServiceResponseTransfer;
 use Spryker\Client\Search\SearchClientInterface;
 
-class HealthIndicator implements HealthIndicatorInterface
+class SearchHealthIndicator implements HealthIndicatorInterface
 {
     /**
      * @var \Spryker\Client\Search\SearchClientInterface

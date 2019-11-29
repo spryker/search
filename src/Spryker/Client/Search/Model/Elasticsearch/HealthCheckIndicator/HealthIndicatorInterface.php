@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Service\Search\HealthIndicator;
+namespace Spryker\Client\Search\Model\Elasticsearch\HealthCheckIndicator;
 
 use Generated\Shared\Transfer\HealthCheckServiceResponseTransfer;
 

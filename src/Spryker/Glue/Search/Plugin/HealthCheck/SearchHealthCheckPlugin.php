@@ -5,16 +5,14 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\Search\Communication\Plugin\HealthCheck;
+namespace Spryker\Glue\Search\Plugin\HealthCheck;
 
 use Generated\Shared\Transfer\HealthCheckServiceResponseTransfer;
+use Spryker\Glue\Kernel\AbstractPlugin;
 use Spryker\Shared\HealthCheckExtension\Dependency\Plugin\HealthCheckPluginInterface;
-use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
 /**
- * @method \Spryker\Zed\Search\Communication\SearchCommunicationFactory getFactory()
- * @method \Spryker\Zed\Search\Business\SearchFacade getFacade()
- * @method \Spryker\Zed\Search\SearchConfig getConfig()
+ * @method \Spryker\Glue\Search\SearchFactory getFactory()
  */
 class SearchHealthCheckPlugin extends AbstractPlugin implements HealthCheckPluginInterface
 {
@@ -41,6 +39,6 @@ class SearchHealthCheckPlugin extends AbstractPlugin implements HealthCheckPlugi
      */
     public function check(): HealthCheckServiceResponseTransfer
     {
-        return $this->getFacade()->executeSearchHealthCheck();
+        return $this->getFactory()->createSearchHealthChecker()->executeHealthCheck();
     }
 }

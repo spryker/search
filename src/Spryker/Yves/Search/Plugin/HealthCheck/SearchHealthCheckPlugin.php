@@ -5,18 +5,19 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Client\Search\Plugin\HealthCheck;
+namespace Spryker\Yves\Search\Plugin\HealthCheck;
 
 use Generated\Shared\Transfer\HealthCheckServiceResponseTransfer;
-use Spryker\Client\Kernel\AbstractPlugin;
 use Spryker\Shared\HealthCheckExtension\Dependency\Plugin\HealthCheckPluginInterface;
-use Spryker\Shared\Search\SearchConfig;
+use Spryker\Yves\Kernel\AbstractPlugin;
 
 /**
- * @method \Spryker\Client\Search\SearchFactory getFactory()
+ * @method \Spryker\Yves\Search\SearchFactory getFactory()
  */
 class SearchHealthCheckPlugin extends AbstractPlugin implements HealthCheckPluginInterface
 {
+    protected const SEARCH_HEALTH_CHECK_SERVICE_NAME = 'search';
+
     /**
      * {@inheritDoc}
      *
@@ -26,7 +27,7 @@ class SearchHealthCheckPlugin extends AbstractPlugin implements HealthCheckPlugi
      */
     public function getName(): string
     {
-        return SearchConfig::SEARCH_SERVICE_NAME;
+        return static::SEARCH_HEALTH_CHECK_SERVICE_NAME;
     }
 
     /**

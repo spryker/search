@@ -5,23 +5,23 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Client\Search\Model\Elasticsearch\HealthCheck;
+namespace Spryker\Glue\Search\HealthCheck;
 
-use Elastica\Client;
 use Exception;
 use Generated\Shared\Transfer\HealthCheckServiceResponseTransfer;
+use Spryker\Client\Search\SearchClientInterface;
 
 class SearchHealthCheck implements HealthCheckInterface
 {
     /**
-     * @var \Elastica\Client
+     * @var \Spryker\Client\Search\SearchClientInterface
      */
     protected $searchClient;
 
     /**
-     * @param \Elastica\Client $searchClient
+     * @param \Spryker\Client\Search\SearchClientInterface $searchClient
      */
-    public function __construct(Client $searchClient)
+    public function __construct(SearchClientInterface $searchClient)
     {
         $this->searchClient = $searchClient;
     }
@@ -35,7 +35,7 @@ class SearchHealthCheck implements HealthCheckInterface
             ->setStatus(true);
 
         try {
-            $this->searchClient->getStatus()->getData();
+            $this->searchClient->checkConnection();
         } catch (Exception $e) {
             return $healthCheckServiceResponseTransfer
                 ->setStatus(false)

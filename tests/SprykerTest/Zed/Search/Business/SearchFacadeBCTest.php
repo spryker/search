@@ -9,6 +9,7 @@ namespace SprykerTest\Zed\Search\Business;
 
 use Codeception\Test\Unit;
 use Elastica\Snapshot;
+use Psr\Log\NullLogger;
 use Spryker\Client\Search\Provider\SearchClientProvider;
 use Spryker\Zed\Search\Business\Model\Elasticsearch\SnapshotHandler;
 use Spryker\Zed\Search\Business\SearchBusinessFactory;
@@ -22,11 +23,14 @@ use Spryker\Zed\Search\Business\SearchFacadeInterface;
  * @group Search
  * @group Business
  * @group Facade
- * @group SearchFacadeTest
+ * @group SearchFacadeBCTest
  * Add your own group annotations below this line
+ *
+ * @deprecated Use `\SprykerTest\Zed\Search\Business\SearchFacadeTest` instead.
  */
-class SearchFacadeTest extends Unit
+class SearchFacadeBCTest extends Unit
 {
+    protected const INDEX_NAME = 'de_search_devtest';
     protected const REPOSITORY_LOCATION_FILE_NAME = 'search_test_file';
     protected const REPOSITORY_NAME = 'search_test_repository';
 
@@ -34,6 +38,14 @@ class SearchFacadeTest extends Unit
      * @var \SprykerTest\Zed\Search\SearchBusinessTester
      */
     protected $tester;
+
+    /**
+     * @return void
+     */
+    protected function _setUp(): void
+    {
+        parent::_setUp();
+    }
 
     /**
      * @return void
@@ -51,16 +63,6 @@ class SearchFacadeTest extends Unit
 
         //Assert
         $this->assertTrue($result);
-    }
-
-    /**
-     * @return void
-     */
-    protected function skipIfCi(): void
-    {
-        if (getenv('TRAVIS')) {
-            $this->markTestSkipped('Travis not set up properly');
-        }
     }
 
     /**
@@ -128,5 +130,77 @@ class SearchFacadeTest extends Unit
         }
 
         return $searchFacade;
+    }
+
+    /**
+     * @return void
+     */
+    public function testDeleteDeletesAnIndex(): void
+    {
+        $this->skipIfCi();
+
+        // Arrange
+        $index = $this->tester->haveIndex(static::INDEX_NAME);
+
+        // Act
+        $response = $this->tester->getFacade()->delete();
+
+        // Assert
+        $this->assertTrue($response->isOk(), 'Delete response was expected to be true but is false.');
+        $this->assertFalse($index->exists(), 'Index was expected to be deleted but still exists.');
+    }
+
+    /**
+     * @return void
+     */
+    public function testGetTotalCountReturnsNumberOfDocumentsInAnIndex(): void
+    {
+        $this->skipIfCi();
+
+        // Arrange
+        $this->tester->haveDocumentInIndex(static::INDEX_NAME);
+
+        // Act
+        $response = $this->tester->getFacade()->getTotalCount();
+
+        // Assert
+        $this->assertSame(1, $response, sprintf('Expected exactly one document but found "%s".', $response));
+    }
+
+    /**
+     * @return void
+     */
+    public function testInstallIndexInstallsIndices(): void
+    {
+        $this->skipIfCi();
+
+        // Arrange
+        $this->tester->mockConfigMethod('getClassTargetDirectory', codecept_output_dir());
+        $this->tester->mockConfigMethod('getJsonIndexDefinitionDirectories', [
+            codecept_data_dir('Fixtures/Definition/FinderBC'),
+        ]);
+
+        $logger = new NullLogger();
+
+        // Act
+        $this->tester->getFacade()->install($logger);
+
+        // Assert
+        $client = $this->tester->getFactory()->getElasticsearchClient();
+        $index = $client->getIndex(static::INDEX_NAME);
+
+        $this->assertTrue($index->exists(), 'Index was expected to be installed but was not.');
+
+        $this->tester->getFacade()->delete(static::INDEX_NAME);
+    }
+
+    /**
+     * @return void
+     */
+    protected function skipIfCi(): void
+    {
+        if (getenv('TRAVIS')) {
+            $this->markTestSkipped('Travis not set up properly');
+        }
     }
 }

@@ -10,7 +10,11 @@
 
         {% block widget_content %}
 
-            {{ searchTable | raw }}
+            {% if (isInLegacyMode) %}
+                {% include '@Search/_partials/mode-warning-message.twig' %}
+            {% else %}
+                {{ searchTable | raw }}
+            {% endif %}
 
         {% endblock %}
 

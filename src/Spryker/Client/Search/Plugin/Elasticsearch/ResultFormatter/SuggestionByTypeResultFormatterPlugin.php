@@ -7,7 +7,6 @@
 
 namespace Spryker\Client\Search\Plugin\Elasticsearch\ResultFormatter;
 
-use Elastica\ResultSet;
 use Generated\Shared\Search\PageIndexMap;
 use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\SuggestionByTypeQueryExpanderPlugin;
 
@@ -37,7 +36,7 @@ class SuggestionByTypeResultFormatterPlugin extends AbstractElasticsearchResultF
      *
      * @return array
      */
-    protected function formatSearchResult(ResultSet $searchResult, array $requestParameters)
+    protected function formatSearchResult(/*ResultSet*/ $searchResult, array $requestParameters)
     {
         $result = [];
         $aggregation = $searchResult->getAggregation(SuggestionByTypeQueryExpanderPlugin::AGGREGATION_NAME);

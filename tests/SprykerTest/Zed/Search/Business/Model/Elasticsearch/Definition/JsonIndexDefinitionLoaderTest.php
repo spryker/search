@@ -428,13 +428,19 @@ class JsonIndexDefinitionLoaderTest extends Unit
     {
         $utilEncodingMock = $this->getMockBuilder(SearchToUtilEncodingInterface::class)
             ->disableOriginalConstructor()
-            ->onlyMethods(['decodeJson'])
+            ->onlyMethods(['decodeJson', 'encodeJson'])
             ->getMock();
 
         $utilEncodingMock
             ->method('decodeJson')
             ->willReturnCallback(function ($json, $assoc) {
                 return json_decode($json, $assoc);
+            });
+
+        $utilEncodingMock
+            ->method('encodeJson')
+            ->willReturnCallback(function ($data) {
+                return json_encode($data);
             });
 
         return $utilEncodingMock;

@@ -9,6 +9,9 @@ namespace Spryker\Zed\Search\Business;
 
 use Generated\Shared\Transfer\HealthCheckServiceResponseTransfer;
 use Generated\Shared\Transfer\LocaleTransfer;
+use Generated\Shared\Transfer\SearchConfigurationCriteriaTransfer;
+use Generated\Shared\Transfer\SearchConfigurationResponseTransfer;
+use Generated\Shared\Transfer\SearchConfigurationTransfer;
 use Psr\Log\LoggerInterface;
 use Spryker\Zed\Kernel\Business\AbstractFacade;
 use Spryker\Zed\Search\Dependency\Plugin\PageMapInterface;
@@ -343,6 +346,38 @@ class SearchFacade extends AbstractFacade implements SearchFacadeInterface
     public function restoreSnapshot($repositoryName, $snapshotName, $options = [])
     {
         return $this->getFactory()->createSnapshotHandler()->restoreSnapshot($repositoryName, $snapshotName, $options);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\SearchConfigurationCriteriaTransfer $searchConfigurationCriteriaTransfer
+     *
+     * @return \Generated\Shared\Transfer\SearchConfigurationTransfer
+     */
+    public function getSearchConfiguration(SearchConfigurationCriteriaTransfer $searchConfigurationCriteriaTransfer): SearchConfigurationTransfer
+    {
+        return $this->getFactory()
+            ->createSearchConfiguration()
+            ->getSearchConfiguration($searchConfigurationCriteriaTransfer);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\SearchConfigurationTransfer $searchConfigurationTransfer
+     *
+     * @return \Generated\Shared\Transfer\SearchConfigurationResponseTransfer
+     */
+    public function saveSearchConfiguration(SearchConfigurationTransfer $searchConfigurationTransfer): SearchConfigurationResponseTransfer
+    {
+        return $this->getFactory()
+            ->createSearchConfiguration()
+            ->saveSearchConfiguration($searchConfigurationTransfer);
     }
 
     /**

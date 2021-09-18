@@ -7,7 +7,6 @@
 
 namespace Spryker\Client\Search\Plugin\Elasticsearch\ResultFormatter;
 
-use Elastica\ResultSet;
 use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\SpellingSuggestionQueryExpanderPlugin;
 
 /**
@@ -36,7 +35,7 @@ class SpellingSuggestionResultFormatterPlugin extends AbstractElasticsearchResul
      *
      * @return string|null
      */
-    protected function formatSearchResult(ResultSet $searchResult, array $requestParameters)
+    protected function formatSearchResult(/*ResultSet*/ $searchResult, array $requestParameters)
     {
         $suggests = $searchResult->getSuggests();
         $spellingSuggestion = $this->extractSpellingSuggestion($suggests);

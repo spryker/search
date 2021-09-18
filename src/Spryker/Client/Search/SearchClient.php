@@ -78,8 +78,15 @@ class SearchClient extends AbstractClient implements SearchClientInterface
     {
         return $this
             ->getFactory()
+            ->createSearchDelegator()
+            ->search($searchQuery, $resultFormatters, $requestParameters);
+
+        /*
+        return $this
+            ->getFactory()
             ->createElasticsearchSearchHandler()
             ->search($searchQuery, $resultFormatters, $requestParameters);
+        */
     }
 
     /**

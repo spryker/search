@@ -25,7 +25,7 @@ abstract class AbstractElasticsearchResultFormatterPlugin extends AbstractPlugin
      */
     public function formatResult($searchResult, array $requestParameters = [])
     {
-        $this->assertResultType($searchResult);
+//        $this->assertResultType($searchResult);
 
         return $this->formatSearchResult($searchResult, $requestParameters);
     }
@@ -54,5 +54,5 @@ abstract class AbstractElasticsearchResultFormatterPlugin extends AbstractPlugin
      *
      * @return mixed
      */
-    abstract protected function formatSearchResult(ResultSet $searchResult, array $requestParameters);
+    abstract protected function formatSearchResult(/*ResultSet*/ $searchResult, array $requestParameters);
 }

@@ -18,6 +18,8 @@ use Spryker\Zed\Search\Business\Definition\JsonIndexDefinitionFinder;
 use Spryker\Zed\Search\Business\Definition\JsonIndexDefinitionMapper;
 use Spryker\Zed\Search\Business\LegacyModeChecker\SearchLegacyModeChecker;
 use Spryker\Zed\Search\Business\LegacyModeChecker\SearchLegacyModeCheckerInterface;
+use Spryker\Zed\Search\Business\Mapper\SearchConfigurationMapper;
+use Spryker\Zed\Search\Business\Mapper\SearchConfigurationMapperInterface;
 use Spryker\Zed\Search\Business\Model\Elasticsearch\Copier\IndexCopier;
 use Spryker\Zed\Search\Business\Model\Elasticsearch\DataMapper\PageDataMapper;
 use Spryker\Zed\Search\Business\Model\Elasticsearch\DataMapper\PageMapBuilder;
@@ -33,6 +35,8 @@ use Spryker\Zed\Search\Business\Model\Elasticsearch\SearchIndexManager;
 use Spryker\Zed\Search\Business\Model\Elasticsearch\SnapshotHandler;
 use Spryker\Zed\Search\Business\Model\SearchInstaller;
 use Spryker\Zed\Search\Business\Model\SearchInstallerInterface;
+use Spryker\Zed\Search\Business\SearchConfiguration\SearchConfiguration;
+use Spryker\Zed\Search\Business\SearchConfiguration\SearchConfigurationInterface;
 use Spryker\Zed\Search\Dependency\Facade\SearchToStoreFacadeInterface;
 use Spryker\Zed\Search\SearchDependencyProvider;
 
@@ -100,6 +104,26 @@ class SearchBusinessFactory extends AbstractBusinessFactory
         return new JsonIndexDefinitionMapper(
             $this->getUtilEncodingService(),
             $this->getStoreFacade()
+        );
+    }
+
+    /**
+     * @return \Spryker\Zed\Search\Business\Mapper\SearchConfigurationMapperInterface
+     */
+    public function createSearchConfigurationMapper(): SearchConfigurationMapperInterface
+    {
+        return new SearchConfigurationMapper();
+    }
+
+    /**
+     * @return \Spryker\Zed\Search\Business\SearchConfiguration\SearchConfigurationInterface
+     */
+    public function createSearchConfiguration(): SearchConfigurationInterface
+    {
+        return new SearchConfiguration(
+            $this->getUtilEncodingService(),
+            $this->getConfig(),
+            $this->createSearchConfigurationMapper()
         );
     }
 

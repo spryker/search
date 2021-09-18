@@ -147,6 +147,16 @@ class SearchConfig extends AbstractBundleConfig
     /**
      * @api
      *
+     * @return string
+     */
+    public function getSearchConfigurationFilePath(): string
+    {
+        return sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'search-configuration.json';
+    }
+
+    /**
+     * @api
+     *
      * @deprecated Use {@link \Spryker\Zed\SearchElasticsearch\SearchElasticsearchConfig::getBlacklistSettingsForIndexUpdate()} instead.
      *
      * @return string[]

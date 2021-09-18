@@ -137,4 +137,13 @@ interface SearchConstants
      * @var string
      */
     public const INDEX_NAME_MAP = 'SEARCH:INDEX_NAME_MAP';
+
+    /**
+     * Specification:
+     * - Defines the storage key under which the the current search configuration is stored in the storage.
+     *
+     * @api
+     * @var string
+     */
+    public const SEARCH_CONFIGURATION_STORAGE_KEY = 'SEARCH:SEARCH_CONFIGURATION_STORAGE_KEY';
 }

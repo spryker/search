@@ -115,6 +115,23 @@ class SearchHelper extends AbstractHelper
     }
 
     /**
+     * @param string $identifier
+     * @param string $sourceIdentifier
+     *
+     * @return \Generated\Shared\Transfer\SearchDocumentTransfer
+     */
+    public function readDocument(string $identifier, string $sourceIdentifier): SearchDocumentTransfer
+    {
+        $searchContextTransfer = new SearchContextTransfer();
+        $searchContextTransfer->setSourceIdentifier($sourceIdentifier);
+        $searchDocumentTransfer = new SearchDocumentTransfer();
+        $searchDocumentTransfer->setId($identifier);
+        $searchDocumentTransfer->setSearchContext($searchContextTransfer);
+
+        return $this->getInMemorySearchPlugin()->readDocument($searchDocumentTransfer);
+    }
+
+    /**
      * @return \SprykerTest\Client\Search\Helper\InMemorySearchPluginInterface
      */
     protected function getInMemorySearchPlugin(): InMemorySearchPluginInterface

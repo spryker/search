@@ -7,7 +7,6 @@
 
 namespace Spryker\Client\Search\Plugin\Elasticsearch\ResultFormatter;
 
-use Elastica\ResultSet;
 use Generated\Shared\Transfer\SortSearchResultTransfer;
 
 /**
@@ -36,7 +35,7 @@ class SortedResultFormatterPlugin extends AbstractElasticsearchResultFormatterPl
      *
      * @return \Generated\Shared\Transfer\SortSearchResultTransfer
      */
-    protected function formatSearchResult(ResultSet $searchResult, array $requestParameters)
+    protected function formatSearchResult(/*ResultSet*/ $searchResult, array $requestParameters)
     {
         $sortConfig = $this
             ->getFactory()

@@ -7,7 +7,6 @@
 
 namespace Spryker\Client\Search\Plugin\Elasticsearch\ResultFormatter;
 
-use Elastica\ResultSet;
 use Generated\Shared\Transfer\PaginationSearchResultTransfer;
 
 /**
@@ -36,7 +35,7 @@ class PaginatedResultFormatterPlugin extends AbstractElasticsearchResultFormatte
      *
      * @return \Generated\Shared\Transfer\PaginationSearchResultTransfer
      */
-    protected function formatSearchResult(ResultSet $searchResult, array $requestParameters)
+    protected function formatSearchResult(/*ResultSet*/ $searchResult, array $requestParameters)
     {
         $paginationConfig = $this
             ->getFactory()

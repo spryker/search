@@ -9,6 +9,9 @@ namespace Spryker\Zed\Search\Business;
 
 use Generated\Shared\Transfer\HealthCheckServiceResponseTransfer;
 use Generated\Shared\Transfer\LocaleTransfer;
+use Generated\Shared\Transfer\SearchConfigurationCriteriaTransfer;
+use Generated\Shared\Transfer\SearchConfigurationResponseTransfer;
+use Generated\Shared\Transfer\SearchConfigurationTransfer;
 use Psr\Log\LoggerInterface;
 use Spryker\Zed\Search\Dependency\Plugin\PageMapInterface;
 
@@ -349,6 +352,30 @@ interface SearchFacadeInterface
      * @return \Generated\Shared\Transfer\HealthCheckServiceResponseTransfer
      */
     public function executeSearchHealthCheck(): HealthCheckServiceResponseTransfer;
+
+    /**
+     * Specification:
+     * - Returns configuration with avaliable search adapters
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\SearchConfigurationCriteriaTransfer $searchConfigurationCriteriaTransfer
+     *
+     * @return \Generated\Shared\Transfer\SearchConfigurationTransfer
+     */
+    public function getSearchConfiguration(SearchConfigurationCriteriaTransfer $searchConfigurationCriteriaTransfer): SearchConfigurationTransfer;
+
+    /**
+     * Specification:
+     * - Saves configuration with selected search adapters
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\SearchConfigurationTransfer $searchConfigurationTransfer
+     *
+     * @return \Generated\Shared\Transfer\SearchConfigurationResponseTransfer
+     */
+    public function saveSearchConfiguration(SearchConfigurationTransfer $searchConfigurationTransfer): SearchConfigurationResponseTransfer;
 
     /**
      * Specification:

@@ -28,5 +28,13 @@ class SearchConfig extends AbstractSharedConfig
     /**
      * @var string
      */
+    public const ELASTICSEARCH_ADAPTER = 'Elasticsearch';
+    /**
+     * @var string
+     */
+    public const ALGOLIA_ADAPTER = 'Algolia';
+    /**
+     * @var string
+     */
     public const FACET_TYPE_CATEGORY = 'category';
 }

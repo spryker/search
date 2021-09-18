@@ -148,6 +148,27 @@
         <property name="name" type="string"/>
     </transfer>
 
+    <transfer name="Message">
+        <property name="message" type="string"/>
+    </transfer>
+
+    <transfer name="SearchAdapterConfiguration" strict="true">
+        <property name="name" type="string"/>
+        <property name="isEnabled" type="bool"/>
+    </transfer>
+
+    <transfer name="SearchConfiguration">
+        <property name="searchAdapterConfigurations" type="SearchAdapterConfiguration[]" singular="searchAdapterConfiguration"/>
+        <property name="selectedSearchAdapter" type="string"></property>
+    </transfer>
+
+    <transfer name="SearchConfigurationCriteria"></transfer>
+
+    <transfer name="SearchConfigurationResponse">
+        <property name="isSuccesful" type="bool"/>
+        <property name="messages" type="Message[]" singular="message"/>
+    </transfer>
+
     <transfer name="IndexDefinitionFile">
         <property name="fileName" type="string"/>
         <property name="storePrefix" type="string"/>

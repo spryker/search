@@ -7,7 +7,6 @@
 
 namespace Spryker\Client\Search\Plugin\Elasticsearch\ResultFormatter;
 
-use Elastica\ResultSet;
 use Generated\Shared\Transfer\FacetConfigTransfer;
 use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\FacetQueryExpanderPlugin;
 
@@ -41,7 +40,7 @@ class FacetResultFormatterPlugin extends AbstractElasticsearchResultFormatterPlu
      *
      * @return array
      */
-    protected function formatSearchResult(ResultSet $searchResult, array $requestParameters)
+    protected function formatSearchResult(/*ResultSet*/ $searchResult, array $requestParameters)
     {
         $facetData = [];
 

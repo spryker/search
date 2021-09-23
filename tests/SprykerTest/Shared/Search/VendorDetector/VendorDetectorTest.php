@@ -26,6 +26,11 @@ use Spryker\Shared\Search\VendorDetector\VendorDetector;
 class VendorDetectorTest extends Unit
 {
     /**
+     * @var \SprykerTest\Shared\Search\SearchTester
+     */
+    protected $tester;
+
+    /**
      * @return void
      */
     protected function setUp(): void
@@ -85,6 +90,21 @@ class VendorDetectorTest extends Unit
 
         // Assert
         $this->assertFalse($isElasticsearch);
+    }
+
+    /**
+     * @return void
+     */
+    public function testIsElasticsearchReturnsTrueWhenStorageClientIsNotInitiated(): void
+    {
+        // Arrange
+        $vendorDetectorStub = $this->tester->getVendorDetectorWithConnectionExceptionThrowingStorageClient();
+
+        // Act
+        $isElasticsearch = $vendorDetectorStub::isElasticsearch();
+
+        // Assert
+        $this->assertTrue($isElasticsearch);
     }
 
     /**

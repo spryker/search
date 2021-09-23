@@ -24,6 +24,8 @@ use Codeception\Actor;
  * @method \Spryker\Zed\Search\Business\SearchFacade getFacade() ()
  *
  * @SuppressWarnings(PHPMD)
+ *
+ * @method \Spryker\Zed\Search\Business\SearchFacadeInterface getFacade()
  */
 class SearchBusinessTester extends Actor
 {

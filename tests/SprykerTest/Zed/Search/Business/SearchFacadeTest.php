@@ -11,6 +11,8 @@ use Codeception\Test\Unit;
 use Generated\Shared\Transfer\SearchAdapterConfigurationTransfer;
 use Generated\Shared\Transfer\SearchConfigurationCriteriaTransfer;
 use Generated\Shared\Transfer\SearchConfigurationTransfer;
+use Spryker\Client\Storage\StorageClient;
+use Spryker\Shared\Search\SearchConstants;
 
 /**
  * Auto-generated group annotations
@@ -44,14 +46,9 @@ class SearchFacadeTest extends Unit
     ];
 
     /**
-     * @return void
+     * @var \SprykerTest\Zed\Search\SearchBusinessTester
      */
-    protected function _setUp(): void
-    {
-        parent::_setUp();
-
-        putenv('TMPDIR=' . $this->tester->getVirtualDirectory());
-    }
+    protected $tester;
 
     /**
      * @return void
@@ -93,6 +90,9 @@ class SearchFacadeTest extends Unit
     public function testGetSearchConfigurationReturnsSearchConfigurationTransfer()
     {
         // Arrange
+        $storageClient = new StorageClient();
+        $storageClient->set(SearchConstants::SEARCH_CONFIGURATION_STORAGE_KEY, json_encode(['adapters' => [static::ELASTICSEARCH_ADAPTER]]));
+
         $expectedSearchConfigurationTransfer = $this->prepareExpectedSearchConfigurationTransfer(static::ELASTICSEARCH_ADAPTER);
 
         // Act

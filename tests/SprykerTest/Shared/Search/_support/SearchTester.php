@@ -8,6 +8,10 @@
 namespace SprykerTest\Shared\Search;
 
 use Codeception\Actor;
+use Codeception\Stub;
+use Predis\Connection\ConnectionException;
+use Spryker\Client\Storage\StorageClient;
+use Spryker\Shared\Search\VendorDetector\VendorDetector;
 
 /**
  * @method void wantToTest($text)
@@ -26,4 +30,22 @@ use Codeception\Actor;
 class SearchTester extends Actor
 {
     use _generated\SearchTesterActions;
+
+    /**
+     * @return \Spryker\Shared\Search\VendorDetector\VendorDetector
+     */
+    public function getVendorDetectorWithConnectionExceptionThrowingStorageClient(): VendorDetector
+    {
+        $storageClientStub = Stub::make(StorageClient::class, [
+            'get' => function () {
+                throw new ConnectionException('Storage client not initialized');
+            },
+        ]);
+
+        $vendorDetectorStub = Stub::make(VendorDetector::class, [
+            'getStorageClient' => $storageClientStub,
+        ]);
+
+        return $vendorDetectorStub;
+    }
 }

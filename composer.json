@@ -26,6 +26,7 @@
         "spryker/application": "*",
         "spryker/code-sniffer": "*",
         "spryker/propel": "*",
+        "spryker/redis": "*",
         "spryker/search-elasticsearch": "*",
         "spryker/silex": "*",
         "spryker/testify": "*"

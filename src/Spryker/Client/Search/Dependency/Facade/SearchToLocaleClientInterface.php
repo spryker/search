@@ -5,14 +5,12 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\Search\Business\Model;
+namespace Spryker\Client\Search\Dependency\Facade;
 
-interface SearchInstallerInterface
+interface SearchToLocaleClientInterface
 {
     /**
-     * @param string|null $storeName
-     *
-     * @return void
+     * @return string
      */
-    public function install(?string $storeName = null): void;
+    public function getCurrentLocale(): string;
 }

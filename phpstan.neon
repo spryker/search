@@ -42,4 +42,6 @@ parameters:
         - { message: '#If condition is always false.#', path: '%rootDir%/../../../src/Spryker/Search/src/Spryker/Client/Search/Dependency/Plugin/SearchStringSetterInterface.php' }
         -
             identifier: missingType.iterableValue
+        -
+            identifier: trait.unused
     reportUnmatchedIgnoredErrors: false

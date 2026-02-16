@@ -187,7 +187,7 @@ class SearchConfig extends AbstractBundleConfig
      */
     protected function getSprykerRootDir()
     {
-        /** @phpstan-var string */
+        // @phpstan-ignore return.type (realpath may return false but this path always exists)
         return realpath(__DIR__ . '/../../../../../');
     }
 

@@ -34,6 +34,7 @@ class ConnectionDelegator implements ConnectionDelegatorInterface
     {
         $isConnectionAdapterExecuted = false;
         foreach ($this->connectionAdapterPlugins as $connectAdapterPlugin) {
+            // @phpstan-ignore instanceof.alwaysTrue (defensive programming for type safety)
             if ($connectAdapterPlugin instanceof ConnectionCheckerAdapterPluginInterface) {
                 $connectAdapterPlugin->checkConnection();
                 $isConnectionAdapterExecuted = true;

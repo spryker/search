@@ -52,9 +52,6 @@ class SearchFactory extends AbstractFactory
      */
     protected static $searchClient;
 
-    /**
-     * @return \Spryker\Client\Search\Delegator\SearchDelegatorInterface
-     */
     public function createSearchDelegator(): SearchDelegatorInterface
     {
         return new SearchDelegator(
@@ -63,9 +60,6 @@ class SearchFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\Search\Delegator\ConnectionDelegatorInterface
-     */
     public function createConnectionDelegator(): ConnectionDelegatorInterface
     {
         return new ConnectionDelegator(
@@ -83,9 +77,6 @@ class SearchFactory extends AbstractFactory
         return new SearchDelegatorAdapter($this->createSearchDelegator(), $this->getConfig());
     }
 
-    /**
-     * @return \Spryker\Client\Search\SearchContext\SearchContextExpanderInterface
-     */
     public function createSearchContextExpander(): SearchContextExpanderInterface
     {
         return new SearchContextExpander(
@@ -417,9 +408,6 @@ class SearchFactory extends AbstractFactory
         return static::$searchClient;
     }
 
-    /**
-     * @return \Spryker\Client\Search\Dependency\Facade\SearchToLocaleClientInterface
-     */
     public function getLocaleClient(): SearchToLocaleClientInterface
     {
         return $this->getProvidedDependency(SearchDependencyProvider::CLIENT_LOCALE);

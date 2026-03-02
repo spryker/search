@@ -18,17 +18,11 @@ class SearchHealthCheck implements HealthCheckInterface
      */
     protected $searchClient;
 
-    /**
-     * @param \Spryker\Client\Search\SearchClientInterface $searchClient
-     */
     public function __construct(SearchClientInterface $searchClient)
     {
         $this->searchClient = $searchClient;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\HealthCheckServiceResponseTransfer
-     */
     public function executeHealthCheck(): HealthCheckServiceResponseTransfer
     {
         $healthCheckServiceResponseTransfer = (new HealthCheckServiceResponseTransfer())

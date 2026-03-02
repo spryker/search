@@ -50,8 +50,5 @@ abstract class AbstractFacetQueryExpanderPluginAggregationTest extends AbstractQ
         $this->assertEquals($expectedAggregations, $aggregations);
     }
 
-    /**
-     * @return array
-     */
     abstract public function facetQueryExpanderDataProvider(): array;
 }

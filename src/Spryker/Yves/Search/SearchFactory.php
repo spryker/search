@@ -16,9 +16,6 @@ use Spryker\Yves\Search\HealthCheck\SearchHealthCheck;
  */
 class SearchFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Yves\Search\HealthCheck\HealthCheckInterface
-     */
     public function createSearchHealthChecker(): HealthCheckInterface
     {
         return new SearchHealthCheck(

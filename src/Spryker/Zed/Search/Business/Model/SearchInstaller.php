@@ -34,11 +34,6 @@ class SearchInstaller implements SearchInstallerInterface
         $this->installer = $installer;
     }
 
-    /**
-     * @param string|null $storeName
-     *
-     * @return void
-     */
     public function install(?string $storeName = null): void
     {
         foreach ($this->installer as $installer) {

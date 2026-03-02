@@ -77,9 +77,6 @@ class LocalizedQueryExpanderPluginTest extends AbstractQueryExpanderPluginTest
         $this->assertEquals($expectedQuery, $query);
     }
 
-    /**
-     * @return array
-     */
     public function localizedQueryExpanderDataProvider(): array
     {
         return [
@@ -87,9 +84,6 @@ class LocalizedQueryExpanderPluginTest extends AbstractQueryExpanderPluginTest
         ];
     }
 
-    /**
-     * @return array
-     */
     protected function getDataForSimpleLocaleFilteredQuery(): array
     {
         $expectedQuery = (new Query())

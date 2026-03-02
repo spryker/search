@@ -16,9 +16,6 @@ use Spryker\Glue\Search\HealthCheck\SearchHealthCheck;
  */
 class SearchFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Glue\Search\HealthCheck\HealthCheckInterface
-     */
     public function createSearchHealthChecker(): HealthCheckInterface
     {
         return new SearchHealthCheck(

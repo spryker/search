@@ -27,9 +27,6 @@ abstract class AbstractNestedQuery implements NestedQueryInterface
      */
     protected $queryBuilder;
 
-    /**
-     * @param \Spryker\Client\Search\Model\Elasticsearch\Query\QueryBuilderInterface $queryBuilder
-     */
     public function __construct(QueryBuilderInterface $queryBuilder)
     {
         $this->queryBuilder = $queryBuilder;

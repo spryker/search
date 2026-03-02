@@ -52,9 +52,6 @@ class SearchFacadeBCTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     protected function _setUp(): void
     {
         $this->skipIfElasticsearch7();
@@ -62,9 +59,6 @@ class SearchFacadeBCTest extends Unit
         parent::_setUp();
     }
 
-    /**
-     * @return void
-     */
     public function testCreateSnapshotRepository(): void
     {
         $this->skipIfCi();
@@ -111,9 +105,6 @@ class SearchFacadeBCTest extends Unit
         return $snapshotHandlerMock;
     }
 
-    /**
-     * @return \Elastica\Snapshot
-     */
     protected function createElasticsearchSnapshot(): Snapshot
     {
         /** @var \Elastica\Client $searchClient */
@@ -122,9 +113,6 @@ class SearchFacadeBCTest extends Unit
         return new Snapshot($searchClient);
     }
 
-    /**
-     * @return string
-     */
     protected function getVirtualRepositoryLocation(): string
     {
         return $this->tester->getVirtualDirectory() . static::REPOSITORY_LOCATION_FILE_NAME;
@@ -147,9 +135,6 @@ class SearchFacadeBCTest extends Unit
         return $searchFacade;
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteDeletesAnIndex(): void
     {
         // Arrange
@@ -163,9 +148,6 @@ class SearchFacadeBCTest extends Unit
         $this->assertFalse($index->exists(), 'Index was expected to be deleted but still exists.');
     }
 
-    /**
-     * @return void
-     */
     public function testGetTotalCountReturnsNumberOfDocumentsInAnIndex(): void
     {
         $this->skipIfCi();
@@ -180,9 +162,6 @@ class SearchFacadeBCTest extends Unit
         $this->assertSame(1, $response, sprintf('Expected exactly one document but found "%s".', $response));
     }
 
-    /**
-     * @return void
-     */
     public function testInstallIndexInstallsIndices(): void
     {
         $this->skipIfCi();
@@ -207,9 +186,6 @@ class SearchFacadeBCTest extends Unit
         $this->tester->getFacade()->delete(static::INDEX_NAME);
     }
 
-    /**
-     * @return void
-     */
     protected function skipIfCi(): void
     {
         if (getenv('TRAVIS')) {
@@ -217,9 +193,6 @@ class SearchFacadeBCTest extends Unit
         }
     }
 
-    /**
-     * @return void
-     */
     protected function skipIfElasticsearch7(): void
     {
         if (!method_exists(Index::class, 'getType')) {

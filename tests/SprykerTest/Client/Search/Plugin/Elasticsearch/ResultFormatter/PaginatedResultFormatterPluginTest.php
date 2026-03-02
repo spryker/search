@@ -69,9 +69,6 @@ class PaginatedResultFormatterPluginTest extends AbstractResultFormatterPluginTe
         $this->assertEquals($expectedResult, $formattedResult);
     }
 
-    /**
-     * @return array
-     */
     public function resultFormatterDataProvider(): array
     {
         return [
@@ -85,9 +82,6 @@ class PaginatedResultFormatterPluginTest extends AbstractResultFormatterPluginTe
         ];
     }
 
-    /**
-     * @return array
-     */
     protected function getDataForFirstPageWithoutRequestParameters(): array
     {
         $totalHits = 100;
@@ -106,9 +100,6 @@ class PaginatedResultFormatterPluginTest extends AbstractResultFormatterPluginTe
         return [$searchConfig, $totalHits, $requestParameters, $expectedResult];
     }
 
-    /**
-     * @return array
-     */
     protected function getZeroResultData(): array
     {
         $totalHits = 0;
@@ -127,9 +118,6 @@ class PaginatedResultFormatterPluginTest extends AbstractResultFormatterPluginTe
         return [$searchConfig, $totalHits, $requestParameters, $expectedResult];
     }
 
-    /**
-     * @return array
-     */
     protected function getDataForExplicitFirstPage(): array
     {
         $totalHits = 100;
@@ -150,12 +138,6 @@ class PaginatedResultFormatterPluginTest extends AbstractResultFormatterPluginTe
         return [$searchConfig, $totalHits, $requestParameters, $expectedResult];
     }
 
-    /**
-     * @param int $page
-     * @param int $expectedPage
-     *
-     * @return array
-     */
     protected function getInvalidPageData(int $page, int $expectedPage): array
     {
         $totalHits = 100;
@@ -176,9 +158,6 @@ class PaginatedResultFormatterPluginTest extends AbstractResultFormatterPluginTe
         return [$searchConfig, $totalHits, $requestParameters, $expectedResult];
     }
 
-    /**
-     * @return array
-     */
     protected function getDataForValidItemsPerPageParameter(): array
     {
         $totalHits = 100;
@@ -199,9 +178,6 @@ class PaginatedResultFormatterPluginTest extends AbstractResultFormatterPluginTe
         return [$searchConfig, $totalHits, $requestParameters, $expectedResult];
     }
 
-    /**
-     * @return array
-     */
     protected function getDataForInvalidItemsPerPageParameter(): array
     {
         $totalHits = 100;
@@ -222,9 +198,6 @@ class PaginatedResultFormatterPluginTest extends AbstractResultFormatterPluginTe
         return [$searchConfig, $totalHits, $requestParameters, $expectedResult];
     }
 
-    /**
-     * @return \Spryker\Client\Search\Dependency\Plugin\SearchConfigInterface
-     */
     protected function createSimpleSearchConfigMock(): SearchConfigInterface
     {
         $searchConfig = $this->createSearchConfigMock();

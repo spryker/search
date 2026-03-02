@@ -26,10 +26,6 @@ class QueryFactory implements QueryFactoryInterface
      */
     protected $moneyPlugin;
 
-    /**
-     * @param \Spryker\Client\Search\Model\Elasticsearch\Query\QueryBuilderInterface $queryBuilder
-     * @param \Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface $moneyPlugin
-     */
     public function __construct(QueryBuilderInterface $queryBuilder, MoneyPluginInterface $moneyPlugin)
     {
         $this->queryBuilder = $queryBuilder;

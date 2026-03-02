@@ -38,9 +38,6 @@ class SearchTable extends AbstractTable
      */
     protected $searchFacade;
 
-    /**
-     * @param \Spryker\Zed\Search\Business\SearchFacadeInterface $searchFacade
-     */
     public function __construct(SearchFacadeInterface $searchFacade)
     {
         $this->searchFacade = $searchFacade;

@@ -31,9 +31,6 @@ class BaseQueryPlugin implements QueryInterface, SearchStringSetterInterface, Se
             ->setQuery(new BoolQuery());
     }
 
-    /**
-     * @return \Elastica\Query
-     */
     public function getSearchQuery(): Query
     {
         return $this->query;

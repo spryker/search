@@ -29,9 +29,6 @@ class SnapshotHandler implements SnapshotHandlerInterface
      */
     protected $elasticaSnapshot;
 
-    /**
-     * @param \Elastica\Snapshot $elasticaSnapshot
-     */
     public function __construct(Snapshot $elasticaSnapshot)
     {
         $this->elasticaSnapshot = $elasticaSnapshot;
@@ -145,13 +142,6 @@ class SnapshotHandler implements SnapshotHandlerInterface
         return $this->elasticaSnapshot->deleteSnapshot($repositoryName, $snapshotName)->isOk();
     }
 
-    /**
-     * @param string $repositoryName
-     * @param string $type
-     * @param array $settings
-     *
-     * @return array
-     */
     protected function buildRepositorySettings(string $repositoryName, string $type = self::TYPE_FILESYSTEM, array $settings = []): array
     {
         if ($type === static::TYPE_FILESYSTEM && !isset($settings[static::SETTINGS_LOCATION])) {

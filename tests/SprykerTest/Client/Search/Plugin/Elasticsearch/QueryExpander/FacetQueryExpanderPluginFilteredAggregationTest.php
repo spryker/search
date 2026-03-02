@@ -30,9 +30,6 @@ use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\FacetQueryExpanderP
  */
 class FacetQueryExpanderPluginFilteredAggregationTest extends AbstractFacetQueryExpanderPluginAggregationTest
 {
-    /**
-     * @return array
-     */
     public function facetQueryExpanderDataProvider(): array
     {
         return [
@@ -45,9 +42,6 @@ class FacetQueryExpanderPluginFilteredAggregationTest extends AbstractFacetQuery
         ];
     }
 
-    /**
-     * @return array
-     */
     protected function createFilteredStringFacetData(): array
     {
         $searchConfig = $this->createStringSearchConfig();
@@ -69,9 +63,6 @@ class FacetQueryExpanderPluginFilteredAggregationTest extends AbstractFacetQuery
         return [$searchConfig, $expectedAggregations, $parameters];
     }
 
-    /**
-     * @return array
-     */
     protected function createMultiFilteredStringFacetData(): array
     {
         $searchConfig = $this->createMultiStringSearchConfig();
@@ -149,9 +140,6 @@ class FacetQueryExpanderPluginFilteredAggregationTest extends AbstractFacetQuery
         return [$searchConfig, $expectedAggregations, $parameters];
     }
 
-    /**
-     * @return array
-     */
     protected function createFilteredIntegerFacetData(): array
     {
         $searchConfig = $this->createIntegerSearchConfig();
@@ -173,9 +161,6 @@ class FacetQueryExpanderPluginFilteredAggregationTest extends AbstractFacetQuery
         return [$searchConfig, $expectedAggregations, $parameters];
     }
 
-    /**
-     * @return array
-     */
     protected function createMultiFilteredIntegerFacetData(): array
     {
         $searchConfig = $this->createMultiIntegerSearchConfig();
@@ -261,9 +246,6 @@ class FacetQueryExpanderPluginFilteredAggregationTest extends AbstractFacetQuery
         return [$searchConfig, $expectedAggregations, $parameters];
     }
 
-    /**
-     * @return array
-     */
     protected function createFilteredCategoryFacetData(): array
     {
         $searchConfig = $this->createCategorySearchConfig();
@@ -284,9 +266,6 @@ class FacetQueryExpanderPluginFilteredAggregationTest extends AbstractFacetQuery
         return [$searchConfig, $expectedAggregations, $parameters];
     }
 
-    /**
-     * @return array
-     */
     protected function createFilteredMixedFacetData(): array
     {
         $searchConfig = $this->createMixedSearchConfig();

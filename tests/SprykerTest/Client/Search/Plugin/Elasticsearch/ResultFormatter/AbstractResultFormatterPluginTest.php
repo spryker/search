@@ -31,9 +31,6 @@ use Spryker\Shared\Search\SearchConfig as SharedSearchConfig;
  */
 abstract class AbstractResultFormatterPluginTest extends Unit
 {
-    /**
-     * @return \Spryker\Client\Search\Dependency\Plugin\SearchConfigInterface
-     */
     protected function createSearchConfigMock(): SearchConfigInterface
     {
         $searchConfigMock = $this->getMockBuilder(SearchConfig::class)
@@ -56,9 +53,6 @@ abstract class AbstractResultFormatterPluginTest extends Unit
         return $searchConfigMock;
     }
 
-    /**
-     * @return \Spryker\Client\Search\Dependency\Plugin\SearchConfigInterface
-     */
     protected function createStringSearchConfig(): SearchConfigInterface
     {
         $searchConfig = $this->createSearchConfigMock();
@@ -74,9 +68,6 @@ abstract class AbstractResultFormatterPluginTest extends Unit
         return $searchConfig;
     }
 
-    /**
-     * @return \Spryker\Client\Search\Dependency\Plugin\SearchConfigInterface
-     */
     protected function createMultiStringSearchConfig(): SearchConfigInterface
     {
         $searchConfig = $this->createSearchConfigMock();
@@ -106,9 +97,6 @@ abstract class AbstractResultFormatterPluginTest extends Unit
         return $searchConfig;
     }
 
-    /**
-     * @return \Spryker\Client\Search\Dependency\Plugin\SearchConfigInterface
-     */
     protected function createIntegerSearchConfig(): SearchConfigInterface
     {
         $searchConfig = $this->createSearchConfigMock();
@@ -124,9 +112,6 @@ abstract class AbstractResultFormatterPluginTest extends Unit
         return $searchConfig;
     }
 
-    /**
-     * @return \Spryker\Client\Search\Dependency\Plugin\SearchConfigInterface
-     */
     protected function createMultiIntegerSearchConfig(): SearchConfigInterface
     {
         $searchConfig = $this->createSearchConfigMock();
@@ -156,9 +141,6 @@ abstract class AbstractResultFormatterPluginTest extends Unit
         return $searchConfig;
     }
 
-    /**
-     * @return \Spryker\Client\Search\Dependency\Plugin\SearchConfigInterface
-     */
     protected function createCategorySearchConfig(): SearchConfigInterface
     {
         $searchConfig = $this->createSearchConfigMock();

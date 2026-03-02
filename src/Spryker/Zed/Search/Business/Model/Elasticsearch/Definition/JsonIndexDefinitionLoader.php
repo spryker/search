@@ -37,11 +37,6 @@ class JsonIndexDefinitionLoader implements IndexDefinitionLoaderInterface
      */
     protected $definitionFinder;
 
-    /**
-     * @param \Spryker\Zed\Search\Business\Definition\IndexDefinitionFinderInterface $definitionFinder
-     * @param \Spryker\Zed\Search\Business\Model\Elasticsearch\Definition\IndexDefinitionMergerInterface $definitionMerger
-     * @param \Spryker\Zed\Search\Dependency\Facade\SearchToStoreFacadeInterface $storeFacade
-     */
     public function __construct(
         IndexDefinitionFinderInterface $definitionFinder,
         IndexDefinitionMergerInterface $definitionMerger,
@@ -73,12 +68,6 @@ class JsonIndexDefinitionLoader implements IndexDefinitionLoaderInterface
         return $this->createIndexDefinitions($indexDefinitions);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\IndexDefinitionFileTransfer $indexDefinitionFileTransfer
-     * @param string $currentStorePrefix
-     *
-     * @return bool
-     */
     protected function isIndexDefinitionFileValidForCurrentStore(
         IndexDefinitionFileTransfer $indexDefinitionFileTransfer,
         string $currentStorePrefix
@@ -88,13 +77,6 @@ class JsonIndexDefinitionLoader implements IndexDefinitionLoaderInterface
         return !$indexDefinitionFileStorePrefix || $indexDefinitionFileStorePrefix === $currentStorePrefix;
     }
 
-    /**
-     * @param array $indexDefinitions
-     * @param array $definitionData
-     * @param string $indexName
-     *
-     * @return array
-     */
     protected function addDefinition(array $indexDefinitions, array $definitionData, string $indexName): array
     {
         if (isset($indexDefinitions[$indexName])) {
@@ -122,12 +104,6 @@ class JsonIndexDefinitionLoader implements IndexDefinitionLoaderInterface
         return $indexDefinitions;
     }
 
-    /**
-     * @param string $indexName
-     * @param array $definitionData
-     *
-     * @return \Generated\Shared\Transfer\ElasticsearchIndexDefinitionTransfer
-     */
     protected function createIndexDefinition(string $indexName, array $definitionData): ElasticsearchIndexDefinitionTransfer
     {
         return (new ElasticsearchIndexDefinitionTransfer())
@@ -136,12 +112,6 @@ class JsonIndexDefinitionLoader implements IndexDefinitionLoaderInterface
             ->setMappings($definitionData['mappings'] ?? []);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\IndexDefinitionFileTransfer $indexDefinitionFileTransfer
-     * @param string $currentStorePrefix
-     *
-     * @return string
-     */
     protected function getIndexName(IndexDefinitionFileTransfer $indexDefinitionFileTransfer, string $currentStorePrefix): string
     {
         $indexName = substr($indexDefinitionFileTransfer->getFileName(), 0, -strlen(static::FILE_EXTENSION));
@@ -155,19 +125,11 @@ class JsonIndexDefinitionLoader implements IndexDefinitionLoaderInterface
         return $indexName;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return string
-     */
     protected function getStorePrefix(StoreTransfer $storeTransfer): string
     {
         return mb_strtolower($storeTransfer->getName()) . '_';
     }
 
-    /**
-     * @return string
-     */
     protected function getIndexNameSuffix(): string
     {
         return Config::get(SearchConstants::SEARCH_INDEX_NAME_SUFFIX, '');

@@ -35,11 +35,6 @@ class StringFacetAggregation extends AbstractTermsFacetAggregation
      */
     protected $searchConfig;
 
-    /**
-     * @param \Generated\Shared\Transfer\FacetConfigTransfer $facetConfigTransfer
-     * @param \Spryker\Client\Search\Model\Elasticsearch\Aggregation\AggregationBuilderInterface $aggregationBuilder
-     * @param \Spryker\Client\Search\SearchConfig $searchConfig
-     */
     public function __construct(
         FacetConfigTransfer $facetConfigTransfer,
         AggregationBuilderInterface $aggregationBuilder,
@@ -106,9 +101,6 @@ class StringFacetAggregation extends AbstractTermsFacetAggregation
         return $aggregation;
     }
 
-    /**
-     * @return int
-     */
     protected function getFacetNameAggregationSize(): int
     {
         return $this->searchConfig->getFacetNameAggregationSize();

@@ -28,11 +28,6 @@ interface SearchDelegatorInterface
      */
     public function readDocument(SearchDocumentTransfer $searchDocumentTransfer);
 
-    /**
-     * @param \Generated\Shared\Transfer\SearchDocumentTransfer $searchDocumentTransfer
-     *
-     * @return bool
-     */
     public function writeDocument(SearchDocumentTransfer $searchDocumentTransfer): bool;
 
     /**
@@ -42,11 +37,6 @@ interface SearchDelegatorInterface
      */
     public function writeDocuments(array $searchDocumentTransfers): bool;
 
-    /**
-     * @param \Generated\Shared\Transfer\SearchDocumentTransfer $searchDocumentTransfer
-     *
-     * @return bool
-     */
     public function deleteDocument(SearchDocumentTransfer $searchDocumentTransfer): bool;
 
     /**

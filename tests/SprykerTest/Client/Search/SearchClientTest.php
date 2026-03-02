@@ -60,9 +60,6 @@ class SearchClientTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         $this->skipIfElasticsearch7();
@@ -73,9 +70,6 @@ class SearchClientTest extends Unit
         $this->setupEnvironmentForSearchTesting();
     }
 
-    /**
-     * @return void
-     */
     public function testGetSearchConfigShouldReturnTheSameInstance(): void
     {
         /** @var \Spryker\Client\Search\SearchFactory|\PHPUnit\Framework\MockObject\MockObject $searchFactoryMock */
@@ -97,9 +91,6 @@ class SearchClientTest extends Unit
         $this->assertSame($searchConfig1, $searchConfig2);
     }
 
-    /**
-     * @return void
-     */
     public function testCheckConnectionIfClientAdapterPluginsIsEmpty(): void
     {
         $elasticaClientMock = $this
@@ -127,9 +118,6 @@ class SearchClientTest extends Unit
         $client->checkConnection();
     }
 
-    /**
-     * @return void
-     */
     public function testCheckConnectionIfClientAdapterPluginsIsNotEmpty(): void
     {
         $clientAdapterPluginMock = $this->createMock(ConnectionCheckerAdapterPluginInterface::class);
@@ -153,9 +141,6 @@ class SearchClientTest extends Unit
         $client->checkConnection();
     }
 
-    /**
-     * @return void
-     */
     public function testCheckConnectionIfClientAdapterPluginsIsWrongType(): void
     {
         $this->expectException(ConnectDelegatorException::class);
@@ -176,9 +161,6 @@ class SearchClientTest extends Unit
         $client->checkConnection();
     }
 
-    /**
-     * @return void
-     */
     public function testClientSearchWithoutResultFormatters(): void
     {
         $this->prepareSearchClientForSearchTest();
@@ -190,9 +172,6 @@ class SearchClientTest extends Unit
         $this->assertEmpty($result);
     }
 
-    /**
-     * @return void
-     */
     public function testClientSearchWithResultFormatters(): void
     {
         $this->prepareSearchClientForSearchTest();
@@ -221,9 +200,6 @@ class SearchClientTest extends Unit
         $this->assertEquals($result, $expectedResult);
     }
 
-    /**
-     * @return void
-     */
     public function testExpandQuery(): void
     {
         /** @var \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface|\PHPUnit\Framework\MockObject\MockObject $queryMock */
@@ -246,9 +222,6 @@ class SearchClientTest extends Unit
         $this->assertInstanceOf(QueryInterface::class, $result);
     }
 
-    /**
-     * @return void
-     */
     public function testSearchKeys(): void
     {
         $expectedQuery = new SearchKeysQuery('foo', 25, 100);
@@ -268,9 +241,6 @@ class SearchClientTest extends Unit
         $clientMock->searchKeys('foo', 25, 100);
     }
 
-    /**
-     * @return void
-     */
     public function testSearchString(): void
     {
         $expectedQuery = new SearchStringQuery('foo:bar', 25, 100);
@@ -290,9 +260,6 @@ class SearchClientTest extends Unit
         $clientMock->searchQueryString('foo:bar', 25, 100);
     }
 
-    /**
-     * @return void
-     */
     protected function prepareSearchClientForSearchTest(): void
     {
         $elasticsearchSearchHandlerMock = $this->getMockBuilder(ElasticsearchSearchHandler::class)
@@ -314,9 +281,6 @@ class SearchClientTest extends Unit
         $this->searchClient->setFactory($searchFactoryMock);
     }
 
-    /**
-     * @return void
-     */
     public function testCanWriteDocument(): void
     {
         // Arrange
@@ -334,9 +298,6 @@ class SearchClientTest extends Unit
         $this->tester->assertDocumentExists($documentId, static::INDEX_NAME, $documentData);
     }
 
-    /**
-     * @return void
-     */
     public function testCanWriteDocumentForSearchContext(): void
     {
         // Arrange
@@ -351,9 +312,6 @@ class SearchClientTest extends Unit
         $this->tester->assertDocumentExists($documentId, static::INDEX_NAME);
     }
 
-    /**
-     * @return void
-     */
     public function testCanWriteMultipleDocuments(): void
     {
         // Arrange
@@ -374,9 +332,6 @@ class SearchClientTest extends Unit
         }
     }
 
-    /**
-     * @return void
-     */
     public function testCanReadDocument(): void
     {
         // Arrange
@@ -391,9 +346,6 @@ class SearchClientTest extends Unit
         $this->assertSame($documentData, $result->getData());
     }
 
-    /**
-     * @return void
-     */
     public function testCanReadDocumentForSearchContext(): void
     {
         // Arrange
@@ -409,9 +361,6 @@ class SearchClientTest extends Unit
         $this->assertSame($documentData, $result->getData());
     }
 
-    /**
-     * @return void
-     */
     public function testCanDeleteDocument(): void
     {
         // Arrange
@@ -428,9 +377,6 @@ class SearchClientTest extends Unit
         $this->tester->assertDocumentDoesNotExist($documentId, static::INDEX_NAME);
     }
 
-    /**
-     * @return void
-     */
     public function testCanDeleteDocumentForSearchContext(): void
     {
         // Arrange
@@ -445,9 +391,6 @@ class SearchClientTest extends Unit
         $this->tester->assertDocumentDoesNotExist($documentId, static::INDEX_NAME);
     }
 
-    /**
-     * @return void
-     */
     public function testCanDeleteMultipleDocuments(): void
     {
         // Arrange
@@ -488,9 +431,6 @@ class SearchClientTest extends Unit
         return $searchDocumentTransfer;
     }
 
-    /**
-     * @return void
-     */
     protected function setupEnvironmentForSearchTesting(): void
     {
         $this->tester->setDependency(SearchDependencyProvider::PLUGINS_SEARCH_CONTEXT_EXPANDER, [
@@ -519,9 +459,6 @@ class SearchClientTest extends Unit
         return $searchContextExpanderMock;
     }
 
-    /**
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\SearchAdapterPluginInterface
-     */
     protected function createElasticsearchSearchAdapterPluginMock(): SearchAdapterPluginInterface
     {
         /** @var \Spryker\Client\SearchExtension\Dependency\Plugin\SearchAdapterPluginInterface $elasticsearchAdapterPluginMock */
@@ -551,9 +488,6 @@ class SearchClientTest extends Unit
         return $searchContextExpanderPluginMock;
     }
 
-    /**
-     * @return void
-     */
     protected function skipIfElasticsearch7(): void
     {
         if (!class_exists('\Elastica\Type')) {

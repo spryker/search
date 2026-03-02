@@ -29,9 +29,6 @@ class GenerateIndexMapConsole extends Console
      */
     public const DESCRIPTION = 'This command will generate the PageIndexMap without requiring the actual Elasticsearch index';
 
-    /**
-     * @return void
-     */
     protected function configure(): void
     {
         $this->setName(static::COMMAND_NAME);
@@ -41,12 +38,6 @@ class GenerateIndexMapConsole extends Console
         parent::configure();
     }
 
-    /**
-     * @param \Symfony\Component\Console\Input\InputInterface $input
-     * @param \Symfony\Component\Console\Output\OutputInterface $output
-     *
-     * @return int
-     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->getFacade()->generatePageIndexMap($this->getMessenger());

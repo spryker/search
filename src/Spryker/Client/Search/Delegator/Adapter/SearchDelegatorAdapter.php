@@ -28,10 +28,6 @@ class SearchDelegatorAdapter implements SearchDelegatorAdapterInterface
      */
     protected $config;
 
-    /**
-     * @param \Spryker\Client\Search\Delegator\SearchDelegatorInterface $searchDelegator
-     * @param \Spryker\Client\Search\SearchConfig $config
-     */
     public function __construct(SearchDelegatorInterface $searchDelegator, SearchConfig $config)
     {
         $this->searchDelegator = $searchDelegator;
@@ -52,13 +48,6 @@ class SearchDelegatorAdapter implements SearchDelegatorAdapterInterface
         return $this->searchDelegator->readDocument($searchDocumentTransfer);
     }
 
-    /**
-     * @param array $documentDataSet
-     * @param string|null $typeName
-     * @param string|null $indexName
-     *
-     * @return bool
-     */
     public function write(array $documentDataSet, ?string $typeName = null, ?string $indexName = null): bool
     {
         [$documentId, $documentDataSet] = $this->getDocumentAttributesFromDocumentDataSet($documentDataSet);
@@ -79,13 +68,6 @@ class SearchDelegatorAdapter implements SearchDelegatorAdapterInterface
         return $this->searchDelegator->writeDocuments($searchDocumentTransfers);
     }
 
-    /**
-     * @param array $documentDataSet
-     * @param string|null $typeName
-     * @param string|null $indexName
-     *
-     * @return bool
-     */
     public function delete(array $documentDataSet, ?string $typeName = null, ?string $indexName = null): bool
     {
         [$documentId] = $this->getDocumentAttributesFromDocumentDataSet($documentDataSet);
@@ -145,12 +127,6 @@ class SearchDelegatorAdapter implements SearchDelegatorAdapterInterface
         return [$documentId, $documentData];
     }
 
-    /**
-     * @param string|null $typeName
-     * @param string|null $storeName
-     *
-     * @return \Generated\Shared\Transfer\SearchContextTransfer
-     */
     protected function createSearchContextTransferFromType(?string $typeName = null, ?string $storeName = null): SearchContextTransfer
     {
         $sourceIdentifier = $this->getSourceIdentifier($typeName);
@@ -173,11 +149,6 @@ class SearchDelegatorAdapter implements SearchDelegatorAdapterInterface
         }, $searchDocumentTransfers);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SearchDocumentTransfer $searchDocumentTransfer
-     *
-     * @return \Generated\Shared\Transfer\SearchDocumentTransfer
-     */
     protected function addSearchContextToSearchDocumentTransfer(SearchDocumentTransfer $searchDocumentTransfer): SearchDocumentTransfer
     {
         $searchContextTransfer = $this->createSearchContextTransferFromType($searchDocumentTransfer->getType(), $searchDocumentTransfer->getStoreName());
@@ -186,11 +157,6 @@ class SearchDelegatorAdapter implements SearchDelegatorAdapterInterface
         return $searchDocumentTransfer;
     }
 
-    /**
-     * @param string|null $typeName
-     *
-     * @return string
-     */
     protected function getSourceIdentifier(?string $typeName): string
     {
         return $typeName ?: $this->config->getDefaultSourceIdentifier();

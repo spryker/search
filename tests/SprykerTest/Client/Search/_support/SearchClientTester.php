@@ -35,9 +35,6 @@ class SearchClientTester extends Actor
      */
     public const LOCALE = 'ab_CD';
 
-    /**
-     * @return \Spryker\Client\Search\Dependency\Facade\SearchToLocaleClientInterface
-     */
     public function createLocaleClient(): SearchToLocaleClientInterface
     {
         return Stub::makeEmpty(SearchToLocaleClientInterface::class);

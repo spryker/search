@@ -20,9 +20,6 @@ class SearchIndexManager implements SearchIndexManagerInterface
      */
     protected $index;
 
-    /**
-     * @param \Elastica\Index $index
-     */
     public function __construct(Index $index)
     {
         $this->index = $index;
@@ -87,9 +84,6 @@ class SearchIndexManager implements SearchIndexManagerInterface
         return $this->index->close()->isOk();
     }
 
-    /**
-     * @return bool
-     */
     public function open(): bool
     {
         return $this->index->open()->isOk();

@@ -53,9 +53,6 @@ class PaginatedQueryExpanderPluginTest extends AbstractQueryExpanderPluginTest
         $this->assertEquals($expectedQuery, $query);
     }
 
-    /**
-     * @return array
-     */
     public function paginatedQueryExpanderDataProvider(): array
     {
         return [
@@ -66,9 +63,6 @@ class PaginatedQueryExpanderPluginTest extends AbstractQueryExpanderPluginTest
         ];
     }
 
-    /**
-     * @return array
-     */
     protected function getDataForFirstPageWithEmptyParameters(): array
     {
         $searchConfig = $this->createSearchConfigMock();
@@ -90,9 +84,6 @@ class PaginatedQueryExpanderPluginTest extends AbstractQueryExpanderPluginTest
         return [$searchConfig, $expectedQuery, $requestParameters];
     }
 
-    /**
-     * @return array
-     */
     protected function getDataForExplicitFirstPage(): array
     {
         $searchConfig = $this->createSearchConfigMock();
@@ -116,9 +107,6 @@ class PaginatedQueryExpanderPluginTest extends AbstractQueryExpanderPluginTest
         return [$searchConfig, $expectedQuery, $requestParameters];
     }
 
-    /**
-     * @return array
-     */
     protected function getDataForNonDefaultItemCount(): array
     {
         $searchConfig = $this->createSearchConfigMock();
@@ -143,9 +131,6 @@ class PaginatedQueryExpanderPluginTest extends AbstractQueryExpanderPluginTest
         return [$searchConfig, $expectedQuery, $requestParameters];
     }
 
-    /**
-     * @return array
-     */
     protected function getDataForNonDefaultInvalidItemCount(): array
     {
         $searchConfig = $this->createSearchConfigMock();

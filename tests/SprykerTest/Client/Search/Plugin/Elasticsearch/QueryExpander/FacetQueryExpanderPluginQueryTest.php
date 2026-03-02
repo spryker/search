@@ -23,9 +23,6 @@ use Elastica\Query\BoolQuery;
  */
 class FacetQueryExpanderPluginQueryTest extends AbstractFacetQueryExpanderPluginQueryTest
 {
-    /**
-     * @return array
-     */
     public function facetQueryExpanderDataProvider(): array
     {
         return [
@@ -39,9 +36,6 @@ class FacetQueryExpanderPluginQueryTest extends AbstractFacetQueryExpanderPlugin
         ];
     }
 
-    /**
-     * @return array
-     */
     protected function createStringFacetData(): array
     {
         $searchConfig = $this->createStringSearchConfig();
@@ -50,9 +44,6 @@ class FacetQueryExpanderPluginQueryTest extends AbstractFacetQueryExpanderPlugin
         return [$searchConfig, $expectedQuery];
     }
 
-    /**
-     * @return array
-     */
     protected function createMultiStringFacetData(): array
     {
         $searchConfig = $this->createMultiStringSearchConfig();
@@ -61,9 +52,6 @@ class FacetQueryExpanderPluginQueryTest extends AbstractFacetQueryExpanderPlugin
         return [$searchConfig, $expectedQuery];
     }
 
-    /**
-     * @return array
-     */
     protected function createIntegerFacetData(): array
     {
         $searchConfig = $this->createIntegerSearchConfig();
@@ -72,9 +60,6 @@ class FacetQueryExpanderPluginQueryTest extends AbstractFacetQueryExpanderPlugin
         return [$searchConfig, $expectedQuery];
     }
 
-    /**
-     * @return array
-     */
     protected function createMultiIntegerFacetData(): array
     {
         $searchConfig = $this->createMultiIntegerSearchConfig();
@@ -83,9 +68,6 @@ class FacetQueryExpanderPluginQueryTest extends AbstractFacetQueryExpanderPlugin
         return [$searchConfig, $expectedQuery];
     }
 
-    /**
-     * @return array
-     */
     protected function createCategoryFacetData(): array
     {
         $searchConfig = $this->createCategorySearchConfig();
@@ -94,9 +76,6 @@ class FacetQueryExpanderPluginQueryTest extends AbstractFacetQueryExpanderPlugin
         return [$searchConfig, $expectedQuery];
     }
 
-    /**
-     * @return array
-     */
     protected function createMultiCategoryFacetData(): array
     {
         $searchConfig = $this->createMultiCategorySearchConfig();
@@ -105,9 +84,6 @@ class FacetQueryExpanderPluginQueryTest extends AbstractFacetQueryExpanderPlugin
         return [$searchConfig, $expectedQuery];
     }
 
-    /**
-     * @return array
-     */
     protected function createMixedFacetData(): array
     {
         $searchConfig = $this->createMixedSearchConfig();

@@ -28,9 +28,6 @@ use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\SpellingSuggestionQ
  */
 class SpellingSuggestionQueryExpanderPluginTest extends AbstractQueryExpanderPluginTest
 {
-    /**
-     * @return void
-     */
     public function testCompletionQueryExpanderShouldThrowExceptionWhenBaseQueryDoesntSupportSuggest(): void
     {
         $this->expectException(MissingSuggestionQueryException::class);
@@ -63,9 +60,6 @@ class SpellingSuggestionQueryExpanderPluginTest extends AbstractQueryExpanderPlu
         $this->assertEquals($expectedQuery, $query);
     }
 
-    /**
-     * @return array
-     */
     public function suggestionQueryExpanderDataProvider(): array
     {
         return [
@@ -74,9 +68,6 @@ class SpellingSuggestionQueryExpanderPluginTest extends AbstractQueryExpanderPlu
         ];
     }
 
-    /**
-     * @return array
-     */
     protected function getDataForSimpleSuggestionQuery(): array
     {
         /** @var \Elastica\Query $expectedQuery */
@@ -96,9 +87,6 @@ class SpellingSuggestionQueryExpanderPluginTest extends AbstractQueryExpanderPlu
         return [$expectedQuery, $expectedSuggest];
     }
 
-    /**
-     * @return array
-     */
     protected function getDataForEmptySuggestionQuery(): array
     {
         /** @var \Elastica\Query $expectedQuery */

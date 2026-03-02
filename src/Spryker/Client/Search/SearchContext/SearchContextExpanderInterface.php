@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\SearchContextTransfer;
 
 interface SearchContextExpanderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\SearchContextTransfer $searchContextTransfer
-     *
-     * @return \Generated\Shared\Transfer\SearchContextTransfer
-     */
     public function expandSearchContext(SearchContextTransfer $searchContextTransfer): SearchContextTransfer;
 }

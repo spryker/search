@@ -102,11 +102,6 @@ class SearchDelegator implements SearchDelegatorInterface
         return $this->getSearchAdapter($searchDocumentTransfer->getSearchContext())->readDocument($searchDocumentTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SearchDocumentTransfer $searchDocumentTransfer
-     *
-     * @return bool
-     */
     public function writeDocument(SearchDocumentTransfer $searchDocumentTransfer): bool
     {
         $searchDocumentTransfer = $this->expandSearchContextTransferForSearchDocumentTransfer($searchDocumentTransfer);
@@ -137,11 +132,6 @@ class SearchDelegator implements SearchDelegatorInterface
         return $overallResult;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SearchDocumentTransfer $searchDocumentTransfer
-     *
-     * @return bool
-     */
     public function deleteDocument(SearchDocumentTransfer $searchDocumentTransfer): bool
     {
         $searchDocumentTransfer = $this->expandSearchContextTransferForSearchDocumentTransfer($searchDocumentTransfer);
@@ -238,11 +228,6 @@ class SearchDelegator implements SearchDelegatorInterface
         }, $searchDocumentTransfers);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SearchDocumentTransfer $searchDocumentTransfer
-     *
-     * @return \Generated\Shared\Transfer\SearchDocumentTransfer
-     */
     protected function expandSearchContextTransferForSearchDocumentTransfer(SearchDocumentTransfer $searchDocumentTransfer): SearchDocumentTransfer
     {
         $mappedSearchContextTransfer = $this->expandSearchContext($searchDocumentTransfer->getSearchContext());
@@ -251,11 +236,6 @@ class SearchDelegator implements SearchDelegatorInterface
         return $searchDocumentTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SearchContextTransfer $searchContextTransfer
-     *
-     * @return \Generated\Shared\Transfer\SearchContextTransfer
-     */
     protected function expandSearchContext(SearchContextTransfer $searchContextTransfer): SearchContextTransfer
     {
         return $this->searchContextExpander->expandSearchContext($searchContextTransfer);

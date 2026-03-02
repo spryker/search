@@ -31,18 +31,12 @@ class IndexMapClassGeneratorTest extends Unit
 
     public const TEST_FILES_DIRECTORY = __DIR__ . '/test_files/';
 
-    /**
-     * @return void
-     */
     public function tearDown(): void
     {
         $searchMapCleaner = new IndexMapCleaner(static::TARGET_DIRECTORY);
         $searchMapCleaner->cleanDirectory();
     }
 
-    /**
-     * @return void
-     */
     public function testGenerateSimpleIndexMap(): void
     {
         $generator = new IndexMapGenerator(static::TARGET_DIRECTORY, 0777);
@@ -74,9 +68,6 @@ class IndexMapClassGeneratorTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGenerateComplexIndexMap(): void
     {
         $generator = new IndexMapGenerator(static::TARGET_DIRECTORY, 0777);
@@ -112,13 +103,6 @@ class IndexMapClassGeneratorTest extends Unit
         );
     }
 
-    /**
-     * @param string $name
-     * @param array $settings
-     * @param array $mappings
-     *
-     * @return \Generated\Shared\Transfer\ElasticsearchIndexDefinitionTransfer
-     */
     protected function createIndexDefinition(string $name, array $settings = [], array $mappings = []): ElasticsearchIndexDefinitionTransfer
     {
         $indexDefinition = new ElasticsearchIndexDefinitionTransfer();

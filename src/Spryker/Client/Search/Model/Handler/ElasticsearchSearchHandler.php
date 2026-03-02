@@ -23,9 +23,6 @@ class ElasticsearchSearchHandler implements SearchHandlerInterface
      */
     protected $indexClientProvider;
 
-    /**
-     * @param \Spryker\Client\Search\Provider\IndexClientProvider $indexClientProvider
-     */
     public function __construct(IndexClientProvider $indexClientProvider)
     {
         $this->indexClientProvider = $indexClientProvider;

@@ -24,11 +24,6 @@ class SearchContextExpander implements SearchContextExpanderInterface
         $this->searchContextExpanderPlugins = $searchContextExpanderPlugins;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SearchContextTransfer $searchContextTransfer
-     *
-     * @return \Generated\Shared\Transfer\SearchContextTransfer
-     */
     public function expandSearchContext(SearchContextTransfer $searchContextTransfer): SearchContextTransfer
     {
         foreach ($this->searchContextExpanderPlugins as $searchContextExpanderPlugin) {

@@ -38,10 +38,6 @@ class FacetExtractor extends AbstractAggregationExtractor implements Aggregation
      */
     protected $valueTransformerPlugin;
 
-    /**
-     * @param \Generated\Shared\Transfer\FacetConfigTransfer $facetConfigTransfer
-     * @param \Spryker\Client\Search\Model\Elasticsearch\AggregationExtractor\FacetValueTransformerFactoryInterface $facetValueTransformerFactory
-     */
     public function __construct(FacetConfigTransfer $facetConfigTransfer, FacetValueTransformerFactoryInterface $facetValueTransformerFactory)
     {
         $this->facetConfigTransfer = $facetConfigTransfer;

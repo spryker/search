@@ -34,9 +34,6 @@ class SearchCommunicationFactory extends AbstractCommunicationFactory
         return $this->getConfig()->getElasticaDocumentType();
     }
 
-    /**
-     * @return \Spryker\Zed\Search\Dependency\Facade\SearchToStoreFacadeInterface
-     */
     public function getStoreFacade(): SearchToStoreFacadeInterface
     {
         return $this->getProvidedDependency(SearchDependencyProvider::FACADE_STORE);

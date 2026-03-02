@@ -38,12 +38,6 @@ class IndexMapInstaller implements SearchInstallerInterface
      */
     protected $messenger;
 
-    /**
-     * @param \Spryker\Zed\Search\Business\Model\Elasticsearch\Definition\IndexDefinitionLoaderInterface $indexDefinitionLoader
-     * @param \Spryker\Zed\Search\Business\Model\Elasticsearch\Generator\IndexMapCleanerInterface $indexMapCleaner
-     * @param \Spryker\Zed\Search\Business\Model\Elasticsearch\Generator\IndexMapGeneratorInterface $indexMapGenerator
-     * @param \Psr\Log\LoggerInterface $messenger
-     */
     public function __construct(
         IndexDefinitionLoaderInterface $indexDefinitionLoader,
         IndexMapCleanerInterface $indexMapCleaner,
@@ -56,11 +50,6 @@ class IndexMapInstaller implements SearchInstallerInterface
         $this->messenger = $messenger;
     }
 
-    /**
-     * @param string|null $storeName
-     *
-     * @return void
-     */
     public function install(?string $storeName = null): void
     {
         $this->indexMapCleaner->cleanDirectory();

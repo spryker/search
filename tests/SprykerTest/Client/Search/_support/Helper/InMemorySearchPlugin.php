@@ -35,11 +35,6 @@ class InMemorySearchPlugin implements InMemorySearchPluginInterface
         return [];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SearchDocumentTransfer $searchDocumentTransfer
-     *
-     * @return \Generated\Shared\Transfer\SearchDocumentTransfer
-     */
     public function readDocument(SearchDocumentTransfer $searchDocumentTransfer): SearchDocumentTransfer
     {
         $searchDocumentId = $searchDocumentTransfer->getIdOrFail();
@@ -62,11 +57,6 @@ class InMemorySearchPlugin implements InMemorySearchPluginInterface
         return new SearchDocumentTransfer();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SearchDocumentTransfer $searchDocumentTransfer
-     *
-     * @return bool
-     */
     public function deleteDocument(SearchDocumentTransfer $searchDocumentTransfer): bool
     {
         $searchDocumentId = $searchDocumentTransfer->getIdOrFail();
@@ -87,11 +77,6 @@ class InMemorySearchPlugin implements InMemorySearchPluginInterface
         return true;
     }
 
-    /**
-     * @param array $searchDocumentTransfers
-     *
-     * @return bool
-     */
     public function deleteDocuments(array $searchDocumentTransfers): bool
     {
         foreach ($searchDocumentTransfers as $searchDocumentTransfer) {
@@ -113,11 +98,6 @@ class InMemorySearchPlugin implements InMemorySearchPluginInterface
         return true;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SearchDocumentTransfer $searchDocumentTransfer
-     *
-     * @return bool
-     */
     public function writeDocument(SearchDocumentTransfer $searchDocumentTransfer): bool
     {
         $searchDocumentId = $searchDocumentTransfer->getIdOrFail();
@@ -160,19 +140,11 @@ class InMemorySearchPlugin implements InMemorySearchPluginInterface
         return true;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return 'in memory search adapter';
     }
 
-    /**
-     * @param string $source
-     *
-     * @return array
-     */
     public function getAllKeys(string $source): array
     {
         if (!isset($this->data[$source])) {
@@ -182,9 +154,6 @@ class InMemorySearchPlugin implements InMemorySearchPluginInterface
         return array_keys($this->data[$source]);
     }
 
-    /**
-     * @return void
-     */
     public function deleteAll(): void
     {
         $this->data = [];

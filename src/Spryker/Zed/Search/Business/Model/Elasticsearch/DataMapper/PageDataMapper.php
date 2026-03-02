@@ -61,10 +61,6 @@ class PageDataMapper implements PageDataMapperInterface
      */
     protected $pageMapInterfaces = [];
 
-    /**
-     * @param \Spryker\Zed\Search\Business\Model\Elasticsearch\DataMapper\PageMapBuilderInterface $pageMapBuilder
-     * @param array $namedPageMapPlugins
-     */
     public function __construct(PageMapBuilderInterface $pageMapBuilder, array $namedPageMapPlugins = [])
     {
         $this->pageMapBuilder = $pageMapBuilder;

@@ -32,9 +32,6 @@ use Spryker\Zed\Search\Dependency\Service\SearchToUtilEncodingInterface;
  */
 class JsonIndexDefinitionLoaderTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testEmptyIndexDefinitionLoading(): void
     {
         // Arrange
@@ -57,9 +54,6 @@ class JsonIndexDefinitionLoaderTest extends Unit
         $this->assertEmpty($definitions['de_baz']->getMappings(), 'empty baz mapping');
     }
 
-    /**
-     * @return void
-     */
     public function testSingleIndexDefinitionLoadingWithMultipleMappingTypes(): void
     {
         // Arrange
@@ -77,9 +71,6 @@ class JsonIndexDefinitionLoaderTest extends Unit
         $this->assertSame('de_foo', $definitions['de_foo']->getIndexName());
     }
 
-    /**
-     * @return void
-     */
     public function testSingleIndexDefinitionSettings(): void
     {
         // Arrange
@@ -114,9 +105,6 @@ class JsonIndexDefinitionLoaderTest extends Unit
         $this->assertEquals($expectedSettings, $definitions['de_foo']->getSettings());
     }
 
-    /**
-     * @return void
-     */
     public function testSingleIndexDefinitionMappings(): void
     {
         // Arrange
@@ -150,9 +138,6 @@ class JsonIndexDefinitionLoaderTest extends Unit
         $this->assertCount(1, $definitions);
     }
 
-    /**
-     * @return void
-     */
     public function testIsIndexNameSuffixUsedWhenProvided(): void
     {
         // Arrange
@@ -188,9 +173,6 @@ class JsonIndexDefinitionLoaderTest extends Unit
         $this->assertEquals($expectedMappings, $definitions['de_foo' . $suffix]->getMappings());
     }
 
-    /**
-     * @return void
-     */
     public function testMultipleIndexDefinitionLoading(): void
     {
         // Arrange
@@ -208,9 +190,6 @@ class JsonIndexDefinitionLoaderTest extends Unit
         $this->assertSame(3, count($definitions));
     }
 
-    /**
-     * @return void
-     */
     public function testMultipleIndexDefinitionMergingWithStoreSpecificFile(): void
     {
         // Arrange
@@ -259,9 +238,6 @@ class JsonIndexDefinitionLoaderTest extends Unit
         $this->assertEquals($barExpectedDefinition, $definitions['de_bar']);
     }
 
-    /**
-     * @return void
-     */
     public function testDefinitionsShouldBeCreatedOnlyForCurrentStore(): void
     {
         // Arrange
@@ -281,9 +257,6 @@ class JsonIndexDefinitionLoaderTest extends Unit
         $this->assertArrayNotHasKey('c_foo', $definitions);
     }
 
-    /**
-     * @return void
-     */
     public function testStoreDefinitionShouldBeOverwritableFromProject(): void
     {
         // Arrange
@@ -351,9 +324,6 @@ class JsonIndexDefinitionLoaderTest extends Unit
         return $jsonIndexDefinitionLoader;
     }
 
-    /**
-     * @return \Spryker\Zed\Search\Business\Model\Elasticsearch\Definition\JsonIndexDefinitionMerger
-     */
     protected function createJsonIndexDefinitionMerger(): JsonIndexDefinitionMerger
     {
         return new JsonIndexDefinitionMerger();
@@ -400,11 +370,6 @@ class JsonIndexDefinitionLoaderTest extends Unit
         );
     }
 
-    /**
-     * @param \Spryker\Zed\Search\Dependency\Facade\SearchToStoreFacadeBridge $searchToStoreFacadeBridge
-     *
-     * @return \Spryker\Zed\Search\Business\Definition\JsonIndexDefinitionMapper
-     */
     protected function getJsonIndexDefinitionMapper(SearchToStoreFacadeBridge $searchToStoreFacadeBridge): JsonIndexDefinitionMapper
     {
         return new JsonIndexDefinitionMapper(
@@ -413,9 +378,6 @@ class JsonIndexDefinitionLoaderTest extends Unit
         );
     }
 
-    /**
-     * @return array
-     */
     protected function getStores(): array
     {
         return ['DE'];

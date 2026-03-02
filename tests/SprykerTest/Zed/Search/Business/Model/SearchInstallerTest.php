@@ -29,9 +29,6 @@ class SearchInstallerTest extends Unit
      */
     protected SearchBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function testInstallForInstallPluginInterface(): void
     {
         // Arrange
@@ -48,9 +45,6 @@ class SearchInstallerTest extends Unit
         $searchInstaller->install(SearchBusinessTester::STORE);
     }
 
-    /**
-     * @return void
-     */
     public function testInstallForStoreAwareInstallPluginInterface(): void
     {
         // Arrange
@@ -67,9 +61,6 @@ class SearchInstallerTest extends Unit
         $searchInstaller->install(SearchBusinessTester::STORE);
     }
 
-    /**
-     * @return void
-     */
     public function testInstallForSearchInstallerInterface(): void
     {
         // Arrange

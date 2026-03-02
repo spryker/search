@@ -20,10 +20,6 @@ class PriceRangeExtractor extends RangeExtractor
      */
     protected $moneyPlugin;
 
-    /**
-     * @param \Generated\Shared\Transfer\FacetConfigTransfer $facetConfigTransfer
-     * @param \Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface $moneyPlugin
-     */
     public function __construct(FacetConfigTransfer $facetConfigTransfer, MoneyPluginInterface $moneyPlugin)
     {
         parent::__construct($facetConfigTransfer);

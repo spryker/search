@@ -21,9 +21,6 @@ class RangeExtractor extends AbstractAggregationExtractor implements Aggregation
      */
     protected $facetConfigTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\FacetConfigTransfer $facetConfigTransfer
-     */
     public function __construct(FacetConfigTransfer $facetConfigTransfer)
     {
         $this->facetConfigTransfer = $facetConfigTransfer;

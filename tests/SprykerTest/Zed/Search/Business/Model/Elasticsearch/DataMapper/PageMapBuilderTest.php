@@ -33,9 +33,6 @@ class PageMapBuilderTest extends Unit
      */
     protected $pageMapBuilder;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -43,9 +40,6 @@ class PageMapBuilderTest extends Unit
         $this->pageMapBuilder = new PageMapBuilder();
     }
 
-    /**
-     * @return void
-     */
     public function testAddingInvalidFieldShouldThrowException(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -75,9 +69,6 @@ class PageMapBuilderTest extends Unit
         $this->assertSame($expectedResult, $pageMapTransfer->modifiedToArray());
     }
 
-    /**
-     * @return array
-     */
     public function pageMapTransferDataProvider(): array
     {
         return [
@@ -144,9 +135,6 @@ class PageMapBuilderTest extends Unit
         $this->assertEquals($expectedResult, $actualResult);
     }
 
-    /**
-     * @return array
-     */
     public function wronglyIndexedArrays(): array
     {
         return [
@@ -159,9 +147,6 @@ class PageMapBuilderTest extends Unit
         ];
     }
 
-    /**
-     * @return array
-     */
     protected function createSingleFulltextData(): array
     {
         $field = PageIndexMap::FULL_TEXT;
@@ -177,9 +162,6 @@ class PageMapBuilderTest extends Unit
         return [$field, $attributeName, $attributeValue, $expectedResult];
     }
 
-    /**
-     * @return array
-     */
     protected function createMultipleFulltextData(): array
     {
         $field = PageIndexMap::FULL_TEXT;
@@ -197,9 +179,6 @@ class PageMapBuilderTest extends Unit
         return [$field, $attributeName, $attributeValue, $expectedResult];
     }
 
-    /**
-     * @return array
-     */
     protected function createSingleFulltextBoostedData(): array
     {
         $field = PageIndexMap::FULL_TEXT_BOOSTED;
@@ -215,9 +194,6 @@ class PageMapBuilderTest extends Unit
         return [$field, $attributeName, $attributeValue, $expectedResult];
     }
 
-    /**
-     * @return array
-     */
     protected function createMultipleFulltextBoostedData(): array
     {
         $field = PageIndexMap::FULL_TEXT_BOOSTED;
@@ -235,9 +211,6 @@ class PageMapBuilderTest extends Unit
         return [$field, $attributeName, $attributeValue, $expectedResult];
     }
 
-    /**
-     * @return array
-     */
     protected function createSingleCompletionTermsData(): array
     {
         $field = PageIndexMap::COMPLETION_TERMS;
@@ -253,9 +226,6 @@ class PageMapBuilderTest extends Unit
         return [$field, $attributeName, $attributeValue, $expectedResult];
     }
 
-    /**
-     * @return array
-     */
     protected function createMultipleCompletionTermsData(): array
     {
         $field = PageIndexMap::COMPLETION_TERMS;
@@ -273,9 +243,6 @@ class PageMapBuilderTest extends Unit
         return [$field, $attributeName, $attributeValue, $expectedResult];
     }
 
-    /**
-     * @return array
-     */
     protected function createSingleSuggestionTermsData(): array
     {
         $field = PageIndexMap::SUGGESTION_TERMS;
@@ -291,9 +258,6 @@ class PageMapBuilderTest extends Unit
         return [$field, $attributeName, $attributeValue, $expectedResult];
     }
 
-    /**
-     * @return array
-     */
     protected function createMultipleSuggestionTermsData(): array
     {
         $field = PageIndexMap::SUGGESTION_TERMS;
@@ -311,9 +275,6 @@ class PageMapBuilderTest extends Unit
         return [$field, $attributeName, $attributeValue, $expectedResult];
     }
 
-    /**
-     * @return array
-     */
     protected function createSimpleSearchResultData(): array
     {
         $field = PageIndexMap::SEARCH_RESULT_DATA;
@@ -332,9 +293,6 @@ class PageMapBuilderTest extends Unit
         return [$field, $attributeName, $attributeValue, $expectedResult];
     }
 
-    /**
-     * @return array
-     */
     protected function createArraySearchResultData(): array
     {
         $field = PageIndexMap::SEARCH_RESULT_DATA;
@@ -357,9 +315,6 @@ class PageMapBuilderTest extends Unit
         return [$field, $attributeName, $attributeValue, $expectedResult];
     }
 
-    /**
-     * @return array
-     */
     protected function createSingleStringFacetData(): array
     {
         $field = PageIndexMap::STRING_FACET;
@@ -380,9 +335,6 @@ class PageMapBuilderTest extends Unit
         return [$field, $attributeName, $attributeValue, $expectedResult];
     }
 
-    /**
-     * @return array
-     */
     protected function createMultipleStringFacetData(): array
     {
         $field = PageIndexMap::STRING_FACET;
@@ -405,9 +357,6 @@ class PageMapBuilderTest extends Unit
         return [$field, $attributeName, $attributeValue, $expectedResult];
     }
 
-    /**
-     * @return array
-     */
     protected function createSingleIntegerFacetData(): array
     {
         $field = PageIndexMap::INTEGER_FACET;
@@ -428,9 +377,6 @@ class PageMapBuilderTest extends Unit
         return [$field, $attributeName, $attributeValue, $expectedResult];
     }
 
-    /**
-     * @return array
-     */
     protected function createMultipleIntegerFacetData(): array
     {
         $field = PageIndexMap::INTEGER_FACET;
@@ -453,9 +399,6 @@ class PageMapBuilderTest extends Unit
         return [$field, $attributeName, $attributeValue, $expectedResult];
     }
 
-    /**
-     * @return array
-     */
     protected function createStringSortData(): array
     {
         $field = PageIndexMap::STRING_SORT;
@@ -474,9 +417,6 @@ class PageMapBuilderTest extends Unit
         return [$field, $attributeName, $attributeValue, $expectedResult];
     }
 
-    /**
-     * @return array
-     */
     protected function createIntegerSortData(): array
     {
         $field = PageIndexMap::INTEGER_SORT;

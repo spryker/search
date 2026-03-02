@@ -81,9 +81,6 @@ class SearchBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Search\Business\Definition\IndexDefinitionFinderInterface
-     */
     public function createJsonIndexDefinitionFinder(): IndexDefinitionFinderInterface
     {
         return new JsonIndexDefinitionFinder(
@@ -92,9 +89,6 @@ class SearchBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Search\Business\Definition\IndexDefinitionMapperInterface
-     */
     public function createJsonIndexDefinitionMapper(): IndexDefinitionMapperInterface
     {
         return new JsonIndexDefinitionMapper(
@@ -186,21 +180,11 @@ class SearchBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @param \Psr\Log\LoggerInterface $messenger
-     *
-     * @return \Spryker\Zed\Search\Business\Model\SearchInstallerInterface
-     */
     public function createSourceMapInstaller(LoggerInterface $messenger): SearchInstallerInterface
     {
         return new SearchInstaller($messenger, $this->getMapInstallerPlugins());
     }
 
-    /**
-     * @param \Psr\Log\LoggerInterface $messenger
-     *
-     * @return \Spryker\Zed\Search\Business\Model\SearchInstallerInterface
-     */
     public function createSearchSourceInstaller(LoggerInterface $messenger): SearchInstallerInterface
     {
         return new SearchInstaller($messenger, $this->getSourceInstallerPlugins());
@@ -374,9 +358,6 @@ class SearchBusinessFactory extends AbstractBusinessFactory
         return $this->getProvidedDependency(SearchDependencyProvider::GUZZLE_CLIENT);
     }
 
-    /**
-     * @return \Spryker\Zed\Search\Business\Model\Elasticsearch\HealthCheck\HealthCheckInterface
-     */
     public function createSearchHealthChecker(): HealthCheckInterface
     {
         return new SearchHealthCheck(
@@ -396,9 +377,6 @@ class SearchBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Search\Dependency\Facade\SearchToStoreFacadeInterface
-     */
     public function getStoreFacade(): SearchToStoreFacadeInterface
     {
         return $this->getProvidedDependency(SearchDependencyProvider::FACADE_STORE);

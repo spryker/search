@@ -12,8 +12,5 @@ namespace Spryker\Zed\Search\Business\LegacyModeChecker;
  */
 interface SearchLegacyModeCheckerInterface
 {
-    /**
-     * @return bool
-     */
     public function isInLegacyMode(): bool;
 }

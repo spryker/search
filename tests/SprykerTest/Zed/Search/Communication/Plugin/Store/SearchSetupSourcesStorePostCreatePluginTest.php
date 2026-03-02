@@ -33,9 +33,6 @@ class SearchSetupSourcesStorePostCreatePluginTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testExecuteReturnsStoreResponseTransfer(): void
     {
         //Arrange

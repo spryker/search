@@ -33,9 +33,6 @@ class SearchClientBCTest extends Unit
      */
     protected const MAPPING_TYPE = 'page';
 
-    /**
-     * @return void
-     */
     protected function _setUp(): void
     {
         $this->skipIfElasticsearch7();
@@ -45,9 +42,6 @@ class SearchClientBCTest extends Unit
         $this->setupEnvironmentForBCSearchTesting();
     }
 
-    /**
-     * @return void
-     */
     public function testCanWriteDocument(): void
     {
         // Arrange
@@ -65,9 +59,6 @@ class SearchClientBCTest extends Unit
         $this->tester->assertDocumentExists($documentId, static::INDEX_NAME, $documentData);
     }
 
-    /**
-     * @return void
-     */
     public function testCanWriteMultipleDocuments(): void
     {
         // Arrange
@@ -88,9 +79,6 @@ class SearchClientBCTest extends Unit
         }
     }
 
-    /**
-     * @return void
-     */
     public function testCanReadDocument(): void
     {
         $documentId = 'document-id';
@@ -102,9 +90,6 @@ class SearchClientBCTest extends Unit
         $this->assertSame($documentData, $result->getData());
     }
 
-    /**
-     * @return void
-     */
     public function testCanDeleteDocument(): void
     {
         $documentId = 'document-id';
@@ -118,9 +103,6 @@ class SearchClientBCTest extends Unit
         $this->tester->assertDocumentDoesNotExist($documentId, static::INDEX_NAME);
     }
 
-    /**
-     * @return void
-     */
     public function testCanDeleteMultipleDocuments(): void
     {
         // Arrange
@@ -167,18 +149,12 @@ class SearchClientBCTest extends Unit
         return $searchDocumentTransfer;
     }
 
-    /**
-     * @return void
-     */
     protected function setupEnvironmentForBCSearchTesting(): void
     {
         $this->tester->mockConfigMethod('getSearchIndexName', static::INDEX_NAME);
         $this->tester->mockConfigMethod('getSearchDocumentType', static::MAPPING_TYPE);
     }
 
-    /**
-     * @return void
-     */
     protected function skipIfElasticsearch7(): void
     {
         if (!method_exists(Index::class, 'getType')) {

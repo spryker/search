@@ -139,11 +139,6 @@ class SearchDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addClientAdapterPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_CLIENT_ADAPTER, function () {
@@ -161,11 +156,6 @@ class SearchDependencyProvider extends AbstractDependencyProvider
         return [];
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addSearchContextExpanderPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_SEARCH_CONTEXT_EXPANDER, function () {
@@ -199,11 +189,6 @@ class SearchDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addLocaleClient(Container $container): Container
     {
         $container->set(static::CLIENT_LOCALE, function (Container $container) {

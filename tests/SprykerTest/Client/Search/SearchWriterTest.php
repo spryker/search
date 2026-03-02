@@ -41,9 +41,6 @@ class SearchWriterTest extends Unit
      */
     protected $type;
 
-    /**
-     * @return void
-     */
     public function testWriteCreateDocumentsWithValidDataSet(): void
     {
         $dataSet = $this->getValidTestDataSet();
@@ -51,9 +48,6 @@ class SearchWriterTest extends Unit
         $this->assertTrue($writer->write($dataSet));
     }
 
-    /**
-     * @return void
-     */
     public function testWriteCreateDocumentsWithInvalidDataSet(): void
     {
         $this->expectException(InvalidDataSetException::class);
@@ -64,9 +58,6 @@ class SearchWriterTest extends Unit
         $this->expectException(InvalidDataSetException::class);
     }
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         $this->skipIfElasticsearch7();
@@ -102,9 +93,6 @@ class SearchWriterTest extends Unit
         return ['value1', 'value2'];
     }
 
-    /**
-     * @return \Spryker\Client\Search\Model\Elasticsearch\Writer\Writer
-     */
     protected function getElasticsearchWriter(): Writer
     {
         return new Writer($this->client, '', '');
@@ -167,9 +155,6 @@ class SearchWriterTest extends Unit
         return $mockResponse;
     }
 
-    /**
-     * @return void
-     */
     protected function skipIfElasticsearch7(): void
     {
         if (!method_exists(Index::class, 'getType')) {

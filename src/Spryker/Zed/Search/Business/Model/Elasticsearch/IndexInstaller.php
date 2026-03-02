@@ -50,12 +50,6 @@ class IndexInstaller implements SearchInstallerInterface
      */
     protected $searchConfig;
 
-    /**
-     * @param \Spryker\Zed\Search\Business\Model\Elasticsearch\Definition\IndexDefinitionLoaderInterface $indexDefinitionLoader
-     * @param \Elastica\Client $elasticaClient
-     * @param \Psr\Log\LoggerInterface $messenger
-     * @param \Spryker\Zed\Search\SearchConfig $searchConfig
-     */
     public function __construct(
         IndexDefinitionLoaderInterface $indexDefinitionLoader,
         Client $elasticaClient,
@@ -68,11 +62,6 @@ class IndexInstaller implements SearchInstallerInterface
         $this->searchConfig = $searchConfig;
     }
 
-    /**
-     * @param string|null $storeName
-     *
-     * @return void
-     */
     public function install(?string $storeName = null): void
     {
         $indexDefinitions = $this->indexDefinitionLoader->loadIndexDefinitions();
@@ -201,12 +190,6 @@ class IndexInstaller implements SearchInstallerInterface
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ElasticsearchIndexDefinitionTransfer $indexDefinitionTransfer
-     * @param \Elastica\Index $index
-     *
-     * @return void
-     */
     protected function updateIndexSettings(
         ElasticsearchIndexDefinitionTransfer $indexDefinitionTransfer,
         Index $index
@@ -285,11 +268,6 @@ class IndexInstaller implements SearchInstallerInterface
         throw new MissingIndexStateException('Can not determine index state.');
     }
 
-    /**
-     * @param array $settings
-     *
-     * @return array
-     */
     protected function removeBlacklistedSettings(array $settings): array
     {
         $blacklistSettingsForIndexUpdate = $this->searchConfig->getBlacklistSettingsForIndexUpdate();
@@ -301,12 +279,6 @@ class IndexInstaller implements SearchInstallerInterface
         return $settings;
     }
 
-    /**
-     * @param array $settings
-     * @param string $removeSettingPath
-     *
-     * @return array
-     */
     protected function removeSettingPath(array $settings, string $removeSettingPath): array
     {
         $settingsElement = &$settings;
@@ -329,11 +301,6 @@ class IndexInstaller implements SearchInstallerInterface
         return $settings;
     }
 
-    /**
-     * @param array $settingPathArray
-     *
-     * @return int
-     */
     protected function getLastPathNumber(array $settingPathArray): int
     {
         end($settingPathArray);

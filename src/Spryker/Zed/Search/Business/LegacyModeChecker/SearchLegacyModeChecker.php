@@ -25,9 +25,6 @@ class SearchLegacyModeChecker implements SearchLegacyModeCheckerInterface
         $this->sourceInstallerPlugins = $sourceInstallerPlugins;
     }
 
-    /**
-     * @return bool
-     */
     public function isInLegacyMode(): bool
     {
         return !count($this->sourceInstallerPlugins);

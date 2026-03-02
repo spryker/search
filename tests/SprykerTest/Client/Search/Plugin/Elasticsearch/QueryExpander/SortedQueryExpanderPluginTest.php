@@ -55,9 +55,6 @@ class SortedQueryExpanderPluginTest extends AbstractQueryExpanderPluginTest
         $this->assertEquals($expectedQuery, $query);
     }
 
-    /**
-     * @return array
-     */
     public function sortedQueryExpanderDataProvider(): array
     {
         return [
@@ -67,9 +64,6 @@ class SortedQueryExpanderPluginTest extends AbstractQueryExpanderPluginTest
         ];
     }
 
-    /**
-     * @return array
-     */
     protected function getDataWithoutSorting(): array
     {
         $searchConfig = $this->createSimpleSortSearchConfig();
@@ -82,9 +76,6 @@ class SortedQueryExpanderPluginTest extends AbstractQueryExpanderPluginTest
         return [$searchConfig, $expectedQuery, $requestParameters];
     }
 
-    /**
-     * @return array
-     */
     protected function getDataForSimpleStringSort(): array
     {
         $searchConfig = $this->createSimpleSortSearchConfig();
@@ -107,9 +98,6 @@ class SortedQueryExpanderPluginTest extends AbstractQueryExpanderPluginTest
         return [$searchConfig, $expectedQuery, $requestParameters];
     }
 
-    /**
-     * @return array
-     */
     protected function getDataForInvalidParameterSort(): array
     {
         $searchConfig = $this->createSimpleSortSearchConfig();
@@ -124,9 +112,6 @@ class SortedQueryExpanderPluginTest extends AbstractQueryExpanderPluginTest
         return [$searchConfig, $expectedQuery, $requestParameters];
     }
 
-    /**
-     * @return \Spryker\Client\Search\Dependency\Plugin\SearchConfigInterface
-     */
     protected function createSimpleSortSearchConfig(): SearchConfigInterface
     {
         $searchConfig = $this->createSearchConfigMock();

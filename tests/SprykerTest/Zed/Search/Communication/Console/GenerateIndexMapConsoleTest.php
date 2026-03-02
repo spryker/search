@@ -40,9 +40,6 @@ class GenerateIndexMapConsoleTest extends Unit
      */
     protected const STORE_NAME_DE = 'DE';
 
-    /**
-     * @return void
-     */
     public function testCommandIsExecutable(): void
     {
         $this->markTestSkipped('This test is skipped until P&S is able to handle search tests.');

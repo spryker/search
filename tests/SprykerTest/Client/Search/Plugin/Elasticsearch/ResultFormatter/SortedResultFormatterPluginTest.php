@@ -64,9 +64,6 @@ class SortedResultFormatterPluginTest extends AbstractResultFormatterPluginTest
         $this->assertEquals($expectedResult, $formattedResult);
     }
 
-    /**
-     * @return array
-     */
     public function resultFormatterDataProvider(): array
     {
         return [
@@ -75,9 +72,6 @@ class SortedResultFormatterPluginTest extends AbstractResultFormatterPluginTest
         ];
     }
 
-    /**
-     * @return array
-     */
     protected function getDataForInactiveSort(): array
     {
         $searchConfig = $this->createSimpleSearchConfigMock();
@@ -92,9 +86,6 @@ class SortedResultFormatterPluginTest extends AbstractResultFormatterPluginTest
         return [$searchConfig, $requestParameters, $expectedResult];
     }
 
-    /**
-     * @return array
-     */
     protected function getDataForActiveSort(): array
     {
         $searchConfig = $this->createSimpleSearchConfigMock();
@@ -111,9 +102,6 @@ class SortedResultFormatterPluginTest extends AbstractResultFormatterPluginTest
         return [$searchConfig, $requestParameters, $expectedResult];
     }
 
-    /**
-     * @return \Spryker\Client\Search\Dependency\Plugin\SearchConfigInterface
-     */
     protected function createSimpleSearchConfigMock(): SearchConfigInterface
     {
         $searchConfig = $this->createSearchConfigMock();

@@ -72,10 +72,6 @@ class IndexMapGenerator implements IndexMapGeneratorInterface
      */
     protected $permissionMode;
 
-    /**
-     * @param string $targetDirectory
-     * @param int $permissionMode
-     */
     public function __construct(string $targetDirectory, int $permissionMode)
     {
         $this->targetBaseDirectory = rtrim($targetDirectory, '/') . '/';

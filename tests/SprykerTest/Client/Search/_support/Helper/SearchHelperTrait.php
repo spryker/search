@@ -11,9 +11,6 @@ use Codeception\Module;
 
 trait SearchHelperTrait
 {
-    /**
-     * @return \SprykerTest\Client\Search\Helper\SearchHelper
-     */
     protected function getSearchHelper(): SearchHelper
     {
         /** @var \SprykerTest\Client\Search\Helper\SearchHelper $searchHelper */
@@ -22,10 +19,5 @@ trait SearchHelperTrait
         return $searchHelper;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return \Codeception\Module
-     */
     abstract protected function getModule(string $name): Module;
 }

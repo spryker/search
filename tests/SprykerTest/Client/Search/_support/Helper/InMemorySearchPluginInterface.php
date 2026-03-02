@@ -11,15 +11,7 @@ use Spryker\Client\SearchExtension\Dependency\Plugin\SearchAdapterPluginInterfac
 
 interface InMemorySearchPluginInterface extends SearchAdapterPluginInterface
 {
-    /**
-     * @param string $source
-     *
-     * @return array
-     */
     public function getAllKeys(string $source): array;
 
-    /**
-     * @return void
-     */
     public function deleteAll(): void;
 }

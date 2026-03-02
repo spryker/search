@@ -39,33 +39,21 @@ class SearchBusinessTester extends Actor
      */
     public const STORE = 'DE';
 
-    /**
-     * @return \Psr\Log\LoggerInterface
-     */
     public function createLogger(): LoggerInterface
     {
         return Stub::makeEmpty(LoggerInterface::class);
     }
 
-    /**
-     * @return \Spryker\Zed\SearchExtension\Dependency\Plugin\InstallPluginInterface
-     */
     public function createInstallPlugin(): InstallPluginInterface
     {
         return Stub::makeEmpty(InstallPluginInterface::class);
     }
 
-    /**
-     * @return \Spryker\Zed\SearchExtension\Dependency\Plugin\StoreAwareInstallPluginInterface
-     */
     public function createStoreAwareInstallPlugin(): StoreAwareInstallPluginInterface
     {
         return Stub::makeEmpty(StoreAwareInstallPluginInterface::class);
     }
 
-    /**
-     * @return \Spryker\Zed\Search\Business\Model\SearchInstallerInterface
-     */
     public function createSearchInstaller(): SearchInstallerInterface
     {
         return Stub::makeEmpty(SearchInstallerInterface::class);

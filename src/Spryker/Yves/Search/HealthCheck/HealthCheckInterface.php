@@ -11,8 +11,5 @@ use Generated\Shared\Transfer\HealthCheckServiceResponseTransfer;
 
 interface HealthCheckInterface
 {
-    /**
-     * @return \Generated\Shared\Transfer\HealthCheckServiceResponseTransfer
-     */
     public function executeHealthCheck(): HealthCheckServiceResponseTransfer;
 }

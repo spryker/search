@@ -33,11 +33,6 @@ class FacetAggregationFactory implements FacetAggregationFactoryInterface
      */
     protected $searchConfig;
 
-    /**
-     * @param \Spryker\Shared\Search\IndexMapInterface $indexMap
-     * @param \Spryker\Client\Search\Model\Elasticsearch\Aggregation\AggregationBuilderInterface $aggregationBuilder
-     * @param \Spryker\Client\Search\SearchConfig $searchConfig
-     */
     public function __construct(IndexMapInterface $indexMap, AggregationBuilderInterface $aggregationBuilder, ClientSearchConfig $searchConfig)
     {
         $this->indexMap = $indexMap;

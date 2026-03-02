@@ -45,9 +45,6 @@ class CompletionQueryExpanderPluginTest extends AbstractQueryExpanderPluginTest
         $this->assertEquals($expectedQuery, $query);
     }
 
-    /**
-     * @return array
-     */
     public function completionQueryExpanderDataProvider(): array
     {
         return [
@@ -55,9 +52,6 @@ class CompletionQueryExpanderPluginTest extends AbstractQueryExpanderPluginTest
         ];
     }
 
-    /**
-     * @return array
-     */
     protected function getDataForSimpleCompletionQuery(): array
     {
         /** @var \Elastica\Query $expectedQuery */

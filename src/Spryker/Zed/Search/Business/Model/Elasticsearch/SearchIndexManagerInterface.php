@@ -40,8 +40,5 @@ interface SearchIndexManagerInterface
      */
     public function close();
 
-    /**
-     * @return bool
-     */
     public function open(): bool;
 }

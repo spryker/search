@@ -19,8 +19,5 @@ interface SearchToStoreFacadeInterface
      */
     public function getAllStores();
 
-    /**
-     * @return bool
-     */
     public function isDynamicStoreEnabled(): bool;
 }

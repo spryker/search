@@ -36,11 +36,6 @@ class SearchHelper extends AbstractHelper
      */
     protected $searchClient;
 
-    /**
-     * @param \Codeception\TestInterface $test
-     *
-     * @return void
-     */
     public function _before(TestInterface $test): void
     {
         $this->cleanupInMemorySearch();
@@ -50,22 +45,11 @@ class SearchHelper extends AbstractHelper
         $this->cleanupStaticCache(SearchFactory::class, 'searchClient', null);
     }
 
-    /**
-     * @param \Codeception\TestInterface $test
-     *
-     * @return void
-     */
     public function _after(TestInterface $test): void
     {
         $this->resetStaticCaches();
     }
 
-    /**
-     * @param string $key
-     * @param string $source
-     *
-     * @return void
-     */
     public function assertSearchHasKey(string $key, string $source): void
     {
         $allSourceKeys = $this->getInMemorySearchPlugin()->getAllKeys($source);
@@ -78,12 +62,6 @@ class SearchHelper extends AbstractHelper
         )));
     }
 
-    /**
-     * @param string $key
-     * @param string $source
-     *
-     * @return void
-     */
     public function assertSearchNotHasKey(string $key, string $source): void
     {
         $allSourceKeys = $this->getInMemorySearchPlugin()->getAllKeys($source);
@@ -106,17 +84,11 @@ class SearchHelper extends AbstractHelper
         $inMemorySearch->deleteAll();
     }
 
-    /**
-     * @return \Spryker\Client\Search\SearchClientInterface
-     */
     public function getSearchClient(): SearchClientInterface
     {
         return $this->searchClient;
     }
 
-    /**
-     * @return \SprykerTest\Client\Search\Helper\InMemorySearchPluginInterface
-     */
     protected function getInMemorySearchPlugin(): InMemorySearchPluginInterface
     {
         if ($this->inMemorySearchPlugin === null) {

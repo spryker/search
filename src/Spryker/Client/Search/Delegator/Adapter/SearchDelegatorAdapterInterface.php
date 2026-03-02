@@ -21,13 +21,6 @@ interface SearchDelegatorAdapterInterface
      */
     public function read(string $key, ?string $typeName = null, ?string $indexName = null);
 
-    /**
-     * @param array $documentDataSet
-     * @param string|null $typeName
-     * @param string|null $indexName
-     *
-     * @return bool
-     */
     public function write(array $documentDataSet, ?string $typeName = null, ?string $indexName = null): bool;
 
     /**
@@ -37,13 +30,6 @@ interface SearchDelegatorAdapterInterface
      */
     public function writeBulk(array $searchDocumentTransfers): bool;
 
-    /**
-     * @param array $documentDataSet
-     * @param string|null $typeName
-     * @param string|null $indexName
-     *
-     * @return bool
-     */
     public function delete(array $documentDataSet, ?string $typeName = null, ?string $indexName = null): bool;
 
     /**

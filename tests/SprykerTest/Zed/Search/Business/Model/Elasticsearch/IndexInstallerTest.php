@@ -32,9 +32,6 @@ use Spryker\Zed\Search\SearchConfig;
  */
 class IndexInstallerTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testIndexInstallerCreatesIndexesIfTheyNotExist(): void
     {
         $indexDefinitions = [
@@ -183,13 +180,6 @@ class IndexInstallerTest extends Unit
         return $messengerMock;
     }
 
-    /**
-     * @param string $name
-     * @param array $settings
-     * @param array $mappings
-     *
-     * @return \Generated\Shared\Transfer\ElasticsearchIndexDefinitionTransfer
-     */
     protected function createIndexDefinition(string $name, array $settings = [], array $mappings = []): ElasticsearchIndexDefinitionTransfer
     {
         $indexDefinition = new ElasticsearchIndexDefinitionTransfer();

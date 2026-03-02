@@ -24,10 +24,6 @@ class CategoryFacetAggregation extends AbstractTermsFacetAggregation
      */
     protected $aggregationBuilder;
 
-    /**
-     * @param \Generated\Shared\Transfer\FacetConfigTransfer $facetConfigTransfer
-     * @param \Spryker\Client\Search\Model\Elasticsearch\Aggregation\AggregationBuilderInterface $aggregationBuilder
-     */
     public function __construct(FacetConfigTransfer $facetConfigTransfer, AggregationBuilderInterface $aggregationBuilder)
     {
         $this->facetConfigTransfer = $facetConfigTransfer;

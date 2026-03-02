@@ -24,10 +24,6 @@ class JsonIndexDefinitionMapper implements IndexDefinitionMapperInterface
      */
     protected $storeFacade;
 
-    /**
-     * @param \Spryker\Zed\Search\Dependency\Service\SearchToUtilEncodingInterface $utilEncodingService
-     * @param \Spryker\Zed\Search\Dependency\Facade\SearchToStoreFacadeInterface $storeFacade
-     */
     public function __construct(
         SearchToUtilEncodingInterface $utilEncodingService,
         SearchToStoreFacadeInterface $storeFacade

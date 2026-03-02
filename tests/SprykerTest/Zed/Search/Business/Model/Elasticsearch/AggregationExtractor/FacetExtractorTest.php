@@ -29,9 +29,6 @@ use Spryker\Client\Search\Model\Elasticsearch\AggregationExtractor\FacetValueTra
  */
 class FacetExtractorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testExtractDataFromAggregations(): void
     {
         $testFieldName = 'field1';
@@ -56,9 +53,6 @@ class FacetExtractorTest extends Unit
         $this->assertEquals($facetResultTransfer->getValues()[1]->getDocCount(), 30);
     }
 
-    /**
-     * @return void
-     */
     public function testExtractDataFromAggregationsStandaloneAggregation(): void
     {
         $testFieldName = 'field1';
@@ -86,11 +80,6 @@ class FacetExtractorTest extends Unit
         $this->assertEquals($facetResultTransfer->getValues()[1]->getDocCount(), 30);
     }
 
-    /**
-     * @param string $fieldName
-     *
-     * @return array
-     */
     protected function getStandaloneAggregationFixture(string $fieldName): array
     {
         return [
@@ -113,11 +102,6 @@ class FacetExtractorTest extends Unit
         ];
     }
 
-    /**
-     * @param string $fieldName
-     *
-     * @return array
-     */
     protected function getAggregationFixture(string $fieldName): array
     {
         return [

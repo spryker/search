@@ -45,9 +45,6 @@ class SearchCloseIndexConsole extends Console
      */
     public const OPTION_ALL_DESCRIPTION = 'If set to this command will work on all indices (_all) instead of the environment specific one.';
 
-    /**
-     * @return void
-     */
     protected function configure(): void
     {
         $this->setName(static::COMMAND_NAME);
@@ -57,12 +54,6 @@ class SearchCloseIndexConsole extends Console
         parent::configure();
     }
 
-    /**
-     * @param \Symfony\Component\Console\Input\InputInterface $input
-     * @param \Symfony\Component\Console\Output\OutputInterface $output
-     *
-     * @return int
-     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         if ($input->getOption(static::OPTION_ALL)) {

@@ -73,11 +73,6 @@ class SearchDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideCommunicationLayerDependencies(Container $container): Container
     {
         $container = $this->addStoreFacade($container);
@@ -99,11 +94,6 @@ class SearchDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addStoreFacade(Container $container): Container
     {
         $container->set(static::FACADE_STORE, function (Container $container) {
@@ -153,11 +143,6 @@ class SearchDependencyProvider extends AbstractBundleDependencyProvider
         return [];
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addSearchSourceInstallerPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_SEARCH_SOURCE_INSTALLER, function () {
@@ -175,11 +160,6 @@ class SearchDependencyProvider extends AbstractBundleDependencyProvider
         return [];
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addSearchMapInstallerPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_SEARCH_MAP_INSTALLER, function () {

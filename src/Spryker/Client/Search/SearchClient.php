@@ -183,6 +183,25 @@ class SearchClient extends AbstractClient implements SearchClientInterface
      *
      * @api
      *
+     * @param array<string, \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface> $searchQueries
+     * @param array<string, array<\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface>> $resultFormattersPerQuery
+     * @param array<string, mixed> $requestParameters
+     *
+     * @return array<string, mixed>
+     */
+    public function multiSearch(array $searchQueries, array $resultFormattersPerQuery, array $requestParameters = []): array
+    {
+        return $this
+            ->getFactory()
+            ->createSearchDelegator()
+            ->multiSearch($searchQueries, $resultFormattersPerQuery, $requestParameters);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
      * @deprecated Will be removed without replacement. This functionality is obsolete and should not be used.
      *
      * @return \Spryker\Client\Search\Dependency\Plugin\SearchConfigInterface

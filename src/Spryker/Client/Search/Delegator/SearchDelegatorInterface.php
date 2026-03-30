@@ -45,4 +45,13 @@ interface SearchDelegatorInterface
      * @return bool
      */
     public function deleteDocuments(array $searchDocumentTransfers): bool;
+
+    /**
+     * @param array<string, \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface> $searchQueries
+     * @param array<string, array<\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface>> $resultFormattersPerQuery
+     * @param array<string, mixed> $requestParameters
+     *
+     * @return array<string, mixed>
+     */
+    public function multiSearch(array $searchQueries, array $resultFormattersPerQuery, array $requestParameters = []): array;
 }

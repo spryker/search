@@ -135,6 +135,23 @@ interface SearchClientInterface
 
     /**
      * Specification:
+     * - Executes multiple search queries in a single batch request to the search engine.
+     * - Each query is identified by a string key.
+     * - Returns results keyed by the same keys as the input queries.
+     * - Uses _msearch endpoint when the underlying adapter supports batching, otherwise falls back to sequential search calls.
+     *
+     * @api
+     *
+     * @param array<string, \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface> $searchQueries
+     * @param array<string, array<\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface>> $resultFormattersPerQuery
+     * @param array<string, mixed> $requestParameters
+     *
+     * @return array<string, mixed>
+     */
+    public function multiSearch(array $searchQueries, array $resultFormattersPerQuery, array $requestParameters = []): array;
+
+    /**
+     * Specification:
      * - Returns a statically cached instance (for performance reasons) of the search configuration
      * - The result is the union of the hard-coded and the dynamic configurations
      * - Dynamic configuration is provided by \Spryker\Client\Search\SearchDependencyProvider::createSearchConfigExpanderPlugins()

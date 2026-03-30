@@ -12,12 +12,17 @@ use Generated\Shared\Transfer\SearchContextTransfer;
 use Generated\Shared\Transfer\SearchDocumentTransfer;
 use Spryker\Client\Search\Exception\SearchDelegatorException;
 use Spryker\Client\Search\SearchContext\SearchContextExpanderInterface;
+use Spryker\Client\SearchExtension\Dependency\Plugin\MultiSearchAdapterPluginInterface;
 use Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface;
 use Spryker\Client\SearchExtension\Dependency\Plugin\SearchAdapterPluginInterface;
 use Spryker\Client\SearchExtension\Dependency\Plugin\SearchContextAwareQueryInterface;
 
 class SearchDelegator implements SearchDelegatorInterface
 {
+    protected const string KEY_QUERIES = 'queries';
+
+    protected const string KEY_FORMATTERS = 'formatters';
+
     /**
      * @var array<\Spryker\Client\SearchExtension\Dependency\Plugin\SearchAdapterPluginInterface>
      */
@@ -239,5 +244,64 @@ class SearchDelegator implements SearchDelegatorInterface
     protected function expandSearchContext(SearchContextTransfer $searchContextTransfer): SearchContextTransfer
     {
         return $this->searchContextExpander->expandSearchContext($searchContextTransfer);
+    }
+
+    /**
+     * @param array<string, \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface> $searchQueries
+     * @param array<string, array<\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface>> $resultFormattersPerQuery
+     * @param array<string, mixed> $requestParameters
+     *
+     * @return array<string, mixed>
+     */
+    public function multiSearch(array $searchQueries, array $resultFormattersPerQuery, array $requestParameters = []): array
+    {
+        $queriesGroupedByAdapter = $this->groupQueriesByAdapter($searchQueries, $resultFormattersPerQuery);
+        $results = [];
+
+        foreach ($queriesGroupedByAdapter as $adapterName => $adapterGroup) {
+            $adapter = $this->searchAdapterPlugins[$adapterName];
+
+            if ($adapter instanceof MultiSearchAdapterPluginInterface) {
+                $adapterResults = $adapter->multiSearch(
+                    $adapterGroup[static::KEY_QUERIES],
+                    $adapterGroup[static::KEY_FORMATTERS],
+                    $requestParameters,
+                );
+                // Keys are unique per query and each key is routed to exactly one adapter by groupQueriesByAdapter
+                $results += $adapterResults;
+
+                continue;
+            }
+
+            foreach ($adapterGroup[static::KEY_QUERIES] as $key => $query) {
+                $results[$key] = $adapter->search($query, $adapterGroup[static::KEY_FORMATTERS][$key] ?? [], $requestParameters);
+            }
+        }
+
+        return $results;
+    }
+
+    /**
+     * @param array<string, \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface> $searchQueries
+     * @param array<string, array<\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface>> $resultFormattersPerQuery
+     *
+     * @return array<string, array<string, mixed>>
+     */
+    protected function groupQueriesByAdapter(array $searchQueries, array $resultFormattersPerQuery): array
+    {
+        $queriesGroupedByAdapter = [];
+
+        foreach ($searchQueries as $key => $query) {
+            $searchContextTransfer = $this->getSearchContext($query);
+            $searchContextTransfer = $this->expandSearchContext($searchContextTransfer);
+            $query = $this->setSearchContext($query, $searchContextTransfer);
+            $adapter = $this->getSearchAdapter($searchContextTransfer);
+            $adapterName = $adapter->getName();
+
+            $queriesGroupedByAdapter[$adapterName][static::KEY_QUERIES][$key] = $query;
+            $queriesGroupedByAdapter[$adapterName][static::KEY_FORMATTERS][$key] = $resultFormattersPerQuery[$key] ?? [];
+        }
+
+        return $queriesGroupedByAdapter;
     }
 }

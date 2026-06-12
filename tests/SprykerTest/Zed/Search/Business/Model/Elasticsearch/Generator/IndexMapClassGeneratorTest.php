@@ -103,6 +103,47 @@ class IndexMapClassGeneratorTest extends Unit
         );
     }
 
+    public function testGenerateMultiFieldIndexMap(): void
+    {
+        $generator = new IndexMapGenerator(static::TARGET_DIRECTORY, 0777);
+
+        $indexDefinition = $this->createIndexDefinition('index-1', [], [
+            'multi-field' => [
+                'properties' => [
+                    'full-text' => [
+                        'search_analyzer' => 'ja_kuromoji_search_analyzer',
+                        'analyzer' => 'ja_kuromoji_index_analyzer',
+                        'fields' => [
+                            'ngram' => [
+                                'type' => 'text',
+                                'search_analyzer' => 'ja_ngram_search_analyzer',
+                                'analyzer' => 'ja_ngram_index_analyzer',
+                            ],
+                        ],
+                    ],
+                    'full-text-boosted' => [
+                        'search_analyzer' => 'ja_kuromoji_search_analyzer',
+                        'analyzer' => 'ja_kuromoji_index_analyzer',
+                        'fields' => [
+                            'ngram' => [
+                                'type' => 'text',
+                                'search_analyzer' => 'ja_ngram_search_analyzer',
+                                'analyzer' => 'ja_ngram_index_analyzer',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
+
+        $generator->generate($indexDefinition);
+
+        $this->assertFileEquals(
+            static::TEST_FILES_DIRECTORY . 'MultiFieldIndexMap.expected.php',
+            static::TARGET_DIRECTORY . 'MultiFieldIndexMap.php',
+        );
+    }
+
     protected function createIndexDefinition(string $name, array $settings = [], array $mappings = []): ElasticsearchIndexDefinitionTransfer
     {
         $indexDefinition = new ElasticsearchIndexDefinitionTransfer();

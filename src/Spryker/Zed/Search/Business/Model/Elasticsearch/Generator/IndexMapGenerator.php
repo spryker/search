@@ -40,6 +40,11 @@ class IndexMapGenerator implements IndexMapGeneratorInterface
     /**
      * @var string
      */
+    public const FIELDS = 'fields';
+
+    /**
+     * @var string
+     */
     public const PROPERTY_PATH_SEPARATOR = '.';
 
     /**
@@ -242,17 +247,17 @@ class IndexMapGenerator implements IndexMapGeneratorInterface
      */
     protected function getChildMetadata($path, array $propertyData, $propertyName, array $metadata)
     {
-        if (!isset($propertyData[static::PROPERTIES])) {
+        $childKey = $this->resolveChildKey($propertyData);
+
+        if ($childKey === null) {
             return $metadata;
         }
 
         $path .= $propertyName . static::PROPERTY_PATH_SEPARATOR;
 
-        $childMetadata = $this->getMetadata($propertyData[static::PROPERTIES], $path);
+        $childMetadata = $this->getMetadata($propertyData[$childKey], $path);
 
-        $metadata = array_merge($metadata, $childMetadata);
-
-        return $metadata;
+        return array_merge($metadata, $childMetadata);
     }
 
     /**
@@ -265,16 +270,29 @@ class IndexMapGenerator implements IndexMapGeneratorInterface
      */
     protected function getChildConstants($path, array $propertyData, $propertyName, array $constants)
     {
-        if (!isset($propertyData[static::PROPERTIES])) {
+        $childKey = $this->resolveChildKey($propertyData);
+
+        if ($childKey === null) {
             return $constants;
         }
 
         $path .= $propertyName . static::PROPERTY_PATH_SEPARATOR;
 
-        $childMetadata = $this->getConstants($propertyData[static::PROPERTIES], $path);
+        $childConstants = $this->getConstants($propertyData[$childKey], $path);
 
-        $constants = array_merge($constants, $childMetadata);
+        return array_merge($constants, $childConstants);
+    }
 
-        return $constants;
+    protected function resolveChildKey(array $propertyData): ?string
+    {
+        if (isset($propertyData[static::PROPERTIES])) {
+            return static::PROPERTIES;
+        }
+
+        if (isset($propertyData[static::FIELDS])) {
+            return static::FIELDS;
+        }
+
+        return null;
     }
 }

@@ -10,8 +10,9 @@ namespace SprykerTest\Client\Search;
 use Codeception\Stub;
 use Codeception\Test\Unit;
 use Elastica\Client;
+use Elastica\Request;
+use Elastica\Response;
 use Elastica\ResultSet;
-use Elastica\Status;
 use Generated\Shared\Transfer\ElasticsearchSearchContextTransfer;
 use Generated\Shared\Transfer\SearchContextTransfer;
 use Generated\Shared\Transfer\SearchDocumentTransfer;
@@ -95,12 +96,13 @@ class SearchClientTest extends Unit
     {
         $elasticaClientMock = $this
             ->getMockBuilder(Client::class)
-            ->onlyMethods(['getStatus'])
+            ->onlyMethods(['request'])
             ->getMock();
         $elasticaClientMock
             ->expects($this->once())
-            ->method('getStatus')
-            ->willReturn($this->getMockBuilder(Status::class)->disableOriginalConstructor()->getMock());
+            ->method('request')
+            ->with('_cluster/health', Request::GET, [], ['local' => 'true'])
+            ->willReturn($this->createMock(Response::class));
 
         /** @var \Spryker\Client\Search\SearchFactory|\PHPUnit\Framework\MockObject\MockObject $searchFactoryMock */
         $searchFactoryMock = $this->getMockBuilder(SearchFactory::class)

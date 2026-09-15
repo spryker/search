@@ -7,6 +7,7 @@
 
 namespace Spryker\Client\Search;
 
+use Elastica\Request;
 use Generated\Shared\Transfer\SearchDocumentTransfer;
 use Spryker\Client\Kernel\AbstractClient;
 use Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface;
@@ -16,6 +17,18 @@ use Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface;
  */
 class SearchClient extends AbstractClient implements SearchClientInterface
 {
+    /**
+     * Served from the local node's cluster state, so the check does not depend on the master
+     * being responsive.
+     *
+     * @var array<string, string>
+     */
+    protected const array ELASTICSEARCH_CLUSTER_HEALTH_PARAMS = [
+        'local' => 'true',
+    ];
+
+    protected const string ELASTICSEARCH_CLUSTER_HEALTH_PATH = '_cluster/health';
+
     /**
      * {@inheritDoc}
      *
@@ -30,10 +43,18 @@ class SearchClient extends AbstractClient implements SearchClientInterface
         $connectionAdapterPlugins = $this->getFactory()->getClientAdapterPlugins();
 
         if (!$connectionAdapterPlugins) {
+            // `getStatus()` issues `GET /_stats`, whose payload grows with the number of indexes
+            // and shards. Nothing here reads it: this call only establishes that the search engine
+            // is reachable, which the constant-size cluster health endpoint answers just as well.
+            // It is a liveness signal, not evidence that any index is readable.
             $this->getFactory()
                 ->getElasticsearchClient()
-                ->getStatus()
-                ->getData();
+                ->request(
+                    static::ELASTICSEARCH_CLUSTER_HEALTH_PATH,
+                    Request::GET,
+                    [],
+                    static::ELASTICSEARCH_CLUSTER_HEALTH_PARAMS,
+                );
 
             return;
         }

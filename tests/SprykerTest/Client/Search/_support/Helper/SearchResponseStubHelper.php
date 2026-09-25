@@ -16,8 +16,10 @@ use SprykerTest\Shared\Testify\Helper\DependencyHelperTrait;
 
 /**
  * Lets a test decide what a search returns, so search-backed resources can be exercised on the
- * docker-free host lane. Everything above the adapter — the Catalog client, the query plugins, the
- * query expanders and the resource mappers — still runs for real.
+ * docker-free host lane. The canned value is the post-formatting result: the Catalog client, the
+ * query plugins and the query expanders still run, but the query they build is discarded instead of
+ * executed, and the result formatter plugins are bypassed entirely. Only the resource mappers above
+ * the Search client run for real against the canned value.
  *
  * The Search client is resolved through the Spryker locator rather than Symfony DI, so the seam is
  * the adapter plugin list and not a `setService()` binding.
